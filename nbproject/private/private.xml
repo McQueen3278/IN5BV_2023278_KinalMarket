@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/org/harolrodriguez/controller/MenuTipoProductoController.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>136</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/controller/MenuPrincipalController.java</file>
+            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/database/DBKinalMarket.sql</file>
+            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/controller/MenuEmpleadosController.java</file>
+            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/system/Main.java</file>
+            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/controller/MenuClientesController.java</file>
+            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/bean/Cargos.java</file>
+            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/bean/Empleados.java</file>
+            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/bean/Clientes.java</file>
+        </group>
+    </open-files>
+</project-private>
