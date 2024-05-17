@@ -15,30 +15,29 @@ import java.sql.Time;
  */
 public class Empleados {
     private int empleadoId;
-    private int cargoId;
-    private int encargadoId;
     private String nombreEmpleado;
     private String apellidoEmpleado;
     private Double sueldo;
     private Time horaEntrada;
     private Time horaSalida;
-
+    private int cargoId;
+    
     public Empleados() {
         
     }
 
-    public Empleados(int empleadoId, int cargoId, int encargadoId, String nombreEmpleado, String apellidoEmpleado, Double sueldo, Time horaEntrada, Time horaSalida) {
+    public Empleados(int empleadoId, String nombreEmpleado, String apellidoEmpleado, Double sueldo, Time horaEntrada, Time horaSalida, int cargoId) {
         this.empleadoId = empleadoId;
-        this.cargoId = cargoId;
-        this.encargadoId = encargadoId;
         this.nombreEmpleado = nombreEmpleado;
         this.apellidoEmpleado = apellidoEmpleado;
         this.sueldo = sueldo;
         this.horaEntrada = horaEntrada;
         this.horaSalida = horaSalida;
+        this.cargoId = cargoId;
     }
+
     
-    
+
 
     public int getEmpleadoId() {
         return empleadoId;
@@ -54,14 +53,6 @@ public class Empleados {
 
     public void setCargoId(int cargoId) {
         this.cargoId = cargoId;
-    }
-
-    public int getEncargadoId() {
-        return encargadoId;
-    }
-
-    public void setEncargadoId(int encargadoId) {
-        this.encargadoId = encargadoId;
     }
 
     public String getNombreEmpleado() {
@@ -104,7 +95,13 @@ public class Empleados {
         this.horaSalida = horaSalida;
     }
 
+    @Override
+    public String toString() {
+        return " | " + getCargoId();
+    }
+
     
     
+        
     
 }

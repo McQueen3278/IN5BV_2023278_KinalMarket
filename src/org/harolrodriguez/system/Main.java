@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import org.harolrodriguez.controller.MenuCargosController;
 import org.harolrodriguez.controller.MenuClientesController;
 import org.harolrodriguez.controller.MenuComprasController;
+import org.harolrodriguez.controller.MenuEmpleadosController;
 import org.harolrodriguez.controller.MenuPrincipalController;
 import org.harolrodriguez.controller.MenuProveedoresController;
 import org.harolrodriguez.controller.MenuTipoProductoController;
@@ -117,6 +118,16 @@ public class Main extends Application {
             MenuCargosController menuCargosView = (MenuCargosController) cambiarEscena("MenuCargosView.fxml", 780, 481);
                 menuCargosView.setEscenarioPrincipal(this);
                 this.escenarioPrincipal.setTitle("Cargos");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+     public void menuEmpleadosView(){
+       try {
+            MenuEmpleadosController menuEmpleadosView = (MenuEmpleadosController) cambiarEscena("MenuEmpleadosView.fxml", 934, 600);
+                menuEmpleadosView.setEscenarioPrincipal(this);
+                this.escenarioPrincipal.setTitle("Empleados");
         } catch (Exception e) {
             e.printStackTrace();
         }
