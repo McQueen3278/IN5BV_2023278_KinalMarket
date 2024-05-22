@@ -4,7 +4,6 @@ package org.harolrodriguez.controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.security.Principal;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,6 +26,7 @@ public class MenuPrincipalController implements Initializable {
     @FXML MenuItem btnMenuProveedores;
     @FXML MenuItem btnMenuTipoProducto;
     @FXML MenuItem btnMenuCargos;
+    @FXML MenuItem btnMenuFacturas;
     @FXML Button btnBack;
     
     @Override
@@ -60,6 +60,8 @@ public class MenuPrincipalController implements Initializable {
             escenarioPrincipal.menuCargosView();
         }else if (event.getSource() == btnMenuEmpleados){
             escenarioPrincipal.menuEmpleadosView();
+        }else if (event.getSource() == btnMenuFacturas){
+            escenarioPrincipal.menuFacturasView();
         }
         
     }

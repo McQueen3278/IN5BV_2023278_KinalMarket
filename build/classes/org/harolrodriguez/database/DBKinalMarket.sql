@@ -69,7 +69,7 @@ Create table Empleados (
 
 -- Se crea la entidad Facturas
 Create table Facturas(
-	facturaId int not null,
+    facturaId int not null,
     facha date,
     hora time,
     total decimal (10,2) not null,

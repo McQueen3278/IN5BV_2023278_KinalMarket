@@ -13,6 +13,7 @@ import org.harolrodriguez.controller.MenuCargosController;
 import org.harolrodriguez.controller.MenuClientesController;
 import org.harolrodriguez.controller.MenuComprasController;
 import org.harolrodriguez.controller.MenuEmpleadosController;
+import org.harolrodriguez.controller.MenuFacturasController;
 import org.harolrodriguez.controller.MenuPrincipalController;
 import org.harolrodriguez.controller.MenuProveedoresController;
 import org.harolrodriguez.controller.MenuTipoProductoController;
@@ -133,6 +134,16 @@ public class Main extends Application {
         }
     }
     
+      public void menuFacturasView(){
+       try {
+            MenuFacturasController menuFacturasView = (MenuFacturasController) cambiarEscena("MenuFacturasView.fxml", 878, 550);
+                menuFacturasView.setEscenarioPrincipal(this);
+                this.escenarioPrincipal.setTitle("Facturas");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+     
     public void programadorView(){
        try {
             ProgramadorController programadorView = (ProgramadorController) cambiarEscena("ProgramadorView.fxml", 705, 442);
