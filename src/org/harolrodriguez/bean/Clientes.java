@@ -23,6 +23,8 @@ public class Clientes {
         this.correoCliente = correoCliente;
     }
 
+    
+
     public int getCodigoCliente() {
         return codigoCliente;
     }

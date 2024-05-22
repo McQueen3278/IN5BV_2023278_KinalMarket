@@ -114,6 +114,59 @@ public class MenuFacturasController implements Initializable {
         colEmpleados.setCellValueFactory(new PropertyValueFactory<Facturas, Integer>("empleadoId"));
     }
 
+    public void seleccionarElemento() {
+        txtFacturaID.setText(String.valueOf(((Facturas) tblFacturas.getSelectionModel().getSelectedItem()).getFacturaId()));
+        txtTotalF.setText(String.valueOf(((Facturas) tblFacturas.getSelectionModel().getSelectedItem()).getTotal()));
+        cmbCliente.getSelectionModel().select(buscarCliente(((Facturas) tblFacturas.getSelectionModel().getSelectedItem()).getCodigoCliente()));
+        cmbEmpleado.getSelectionModel().select(((Facturas) tblFacturas.getSelectionModel().getSelectedItem()).getEmpleadoId());
+
+    }
+
+    public Clientes buscarCliente(int codigoCliente) {
+        Clientes resultado = null;
+        try {
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_BuscarClientes(?)}");
+            procedimiento.setInt(1, codigoCliente);
+            ResultSet registro = procedimiento.executeQuery();
+            while (registro.next()) {
+                resultado = new Clientes(
+                        registro.getInt("codigoCliente"),
+                        registro.getString("NITCliente"),
+                        registro.getString("nombreCliente"),
+                        registro.getString("apellidoCliente"),
+                        registro.getString("direccionCliente"),
+                        registro.getString("telefonoCliente"),
+                        registro.getString("correoCliente")
+                );
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return resultado;
+    }
+
+    public Empleados buscarEmpleado(int empleadoId) {
+        Empleados resultado = null;
+        try {
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarEmpleados(?)}");
+            procedimiento.setInt(1, empleadoId);
+            ResultSet registro = procedimiento.executeQuery();
+            while (registro.next()) {
+                resultado = new Empleados(registro.getInt("empleadoId"),
+                        registro.getString("nombreEmpleado"),
+                        registro.getString("apellidoEmpleado"),
+                        registro.getDouble("sueldo"),
+                        registro.getTime("horaEntrada"),
+                        registro.getTime("horaSalida"),
+                        registro.getInt("cargoId")
+                );
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return resultado;
+    }
+
     public ObservableList<Facturas> getFacturas() {
         ArrayList<Facturas> lista = new ArrayList<>();
         try {
@@ -212,32 +265,33 @@ public class MenuFacturasController implements Initializable {
 
     }
 
-   public void guardar() {
-    Facturas registro = new Facturas();
-    registro.setFacturaId(Integer.parseInt(txtFacturaID.getText()));
-    registro.setCodigoCliente(((Clientes)cmbCliente.getSelectionModel().getSelectedItem()).getCodigoCliente());
-    registro.setEmpleadoId(((Empleados)cmbEmpleado.getSelectionModel().getSelectedItem()).getEmpleadoId());
-    registro.setTotal(Double.parseDouble(txtTotalF.getText()));
-    LocalDate fechaSeleccionada = dtpFechaF.getValue();
-    java.sql.Date fecha = java.sql.Date.valueOf(fechaSeleccionada);
+    public void guardar() {
+        Facturas registro = new Facturas();
+        registro.setFacturaId(Integer.parseInt(txtFacturaID.getText()));
+        registro.setCodigoCliente(((Clientes) cmbCliente.getSelectionModel().getSelectedItem()).getCodigoCliente());
+        registro.setEmpleadoId(((Empleados) cmbEmpleado.getSelectionModel().getSelectedItem()).getEmpleadoId());
+        registro.setTotal(Double.parseDouble(txtTotalF.getText()));
+        LocalDate fechaSeleccionada = dtpFechaF.getValue();
+        java.sql.Date fecha = java.sql.Date.valueOf(fechaSeleccionada);
 
-    LocalTime horaSeleccionada = dtmHoraF.getValue();
-    Time hora = java.sql.Time.valueOf(horaSeleccionada);
-    registro.setHora(hora);
-    try {
-        PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_agregarFactura(?, ?, ?, ?, ?, ?)}");
-        procedimiento.setInt(1, registro.getFacturaId());
-        procedimiento.setDate(2, fecha);
-        procedimiento.setTime(3, registro.getHora());
-        procedimiento.setDouble(4, registro.getTotal()); 
-        procedimiento.setInt(5, registro.getCodigoCliente());
-        procedimiento.setInt(6, registro.getEmpleadoId());
-        procedimiento.execute();
-        listaFacturas.add(registro);
-    } catch (Exception e) {
-        e.printStackTrace();
+        LocalTime horaSeleccionada = dtmHoraF.getValue();
+        Time hora = java.sql.Time.valueOf(horaSeleccionada);
+        registro.setHora(hora);
+        try {
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_agregarFactura(?, ?, ?, ?, ?, ?)}");
+            procedimiento.setInt(1, registro.getFacturaId());
+            procedimiento.setInt(2, registro.getCodigoCliente());
+            procedimiento.setInt(3, registro.getEmpleadoId());
+            procedimiento.setDate(4, fecha);
+            procedimiento.setTime(5, registro.getHora());
+            procedimiento.setDouble(6, registro.getTotal());
+
+            procedimiento.execute();
+            listaFacturas.add(registro);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-}
 
     public void eliminar() {
         switch (tipoDeOperaciones) {
@@ -248,8 +302,8 @@ public class MenuFacturasController implements Initializable {
                 btnEliminar.setText("Eliminar");
                 btnEditar.setDisable(false);
                 btnReporte.setDisable(false);
-                imgAgregar.setImage(new Image("/org/harolrodriguez/images/AgregarC.png"));
-                imgEliminar.setImage(new Image("/org/harolrodriguez/images/EliminarC.png"));
+                imgAgregar.setImage(new Image("/org/harolrodriguez/images/AgregarF.png"));
+                imgEliminar.setImage(new Image("/org/harolrodriguez/images/EliminarF.png"));
                 tipoDeOperaciones = operaciones.NINGUNO;
                 break;
             default:
@@ -270,7 +324,34 @@ public class MenuFacturasController implements Initializable {
                 }
         }
     }
+    
+    public void actualizar(){
+        try{
+             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_editarEmpleado(?, ?, ?, ?, ?, ?) }");
+             Facturas registro = (Facturas) tblFacturas.getSelectionModel().getSelectedItem();
+              registro.setFacturaId(Integer.parseInt(txtFacturaID.getText()));
+        registro.setCodigoCliente(((Clientes) cmbCliente.getSelectionModel().getSelectedItem()).getCodigoCliente());
+        registro.setEmpleadoId(((Empleados) cmbEmpleado.getSelectionModel().getSelectedItem()).getEmpleadoId());
+        registro.setTotal(Double.parseDouble(txtTotalF.getText()));
+        LocalDate fechaSeleccionada = dtpFechaF.getValue();
+        java.sql.Date fecha = java.sql.Date.valueOf(fechaSeleccionada);
 
+        LocalTime horaSeleccionada = dtmHoraF.getValue();
+        Time hora = java.sql.Time.valueOf(horaSeleccionada);
+        registro.setHora(hora);
+            procedimiento.setInt(1, registro.getFacturaId());
+            procedimiento.setInt(2, registro.getCodigoCliente());
+            procedimiento.setInt(3, registro.getEmpleadoId());
+            procedimiento.setDate(4, fecha);
+            procedimiento.setTime(5, registro.getHora());
+            procedimiento.setDouble(6, registro.getTotal());
+
+            procedimiento.execute();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
     public void reporte() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:

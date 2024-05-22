@@ -208,43 +208,41 @@ public class MenuEmpleadosController implements Initializable {
 
     public void guardar() {
         Empleados registro = new Empleados();
-       registro.setEmpleadoId(Integer.parseInt(txtEmpleadoID.getText()));
-    registro.setCargoId(((Cargos) cmbCargoID.getSelectionModel().getSelectedItem()).getCargoId());
-    registro.setNombreEmpleado(txtNombreE.getText());
-    registro.setApellidoEmpleado(txtApellidoE.getText());
-    registro.setSueldo(Double.parseDouble(txtSueldoE.getText()));
+        registro.setEmpleadoId(Integer.parseInt(txtEmpleadoID.getText()));
+        registro.setCargoId(((Cargos) cmbCargoID.getSelectionModel().getSelectedItem()).getCargoId());
+        registro.setNombreEmpleado(txtNombreE.getText());
+        registro.setApellidoEmpleado(txtApellidoE.getText());
+        registro.setSueldo(Double.parseDouble(txtSueldoE.getText()));
 
-    
-    LocalTime horaEntradaLocal = txtHoraEntradaE.getValue();
-    LocalTime horaSalidaLocal = txtHoraSalidaE.getValue();
+        LocalTime horaEntradaLocal = txtHoraEntradaE.getValue();
+        LocalTime horaSalidaLocal = txtHoraSalidaE.getValue();
 
-    
-    if (horaEntradaLocal != null && horaSalidaLocal != null) {
-        Time horaEntrada = Time.valueOf(horaEntradaLocal);
-        Time horaSalida = Time.valueOf(horaSalidaLocal);
-        registro.setHoraEntrada(horaEntrada);
-        registro.setHoraSalida(horaSalida);
-    } else {
-       
-        JOptionPane.showMessageDialog(null, "Debe seleccionar las horas de entrada y salida.");
-        return;
+        if (horaEntradaLocal != null && horaSalidaLocal != null) {
+            Time horaEntrada = Time.valueOf(horaEntradaLocal);
+            Time horaSalida = Time.valueOf(horaSalidaLocal);
+            registro.setHoraEntrada(horaEntrada);
+            registro.setHoraSalida(horaSalida);
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Debe seleccionar las horas de entrada y salida.");
+            return;
+        }
+
+        try {
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_agregarEmpleados(?, ?, ?, ?, ?, ?, ?)}");
+            procedimiento.setInt(1, registro.getEmpleadoId());
+            procedimiento.setString(2, registro.getNombreEmpleado());
+            procedimiento.setString(3, registro.getApellidoEmpleado());
+            procedimiento.setDouble(4, registro.getSueldo());
+            procedimiento.setTime(5, registro.getHoraEntrada());
+            procedimiento.setTime(6, registro.getHoraSalida());
+            procedimiento.setInt(7, registro.getCargoId());
+            procedimiento.execute();
+            listaEmpleados.add(registro);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
-    try {
-        PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_agregarEmpleados(?, ?, ?, ?, ?, ?, ?)}");
-        procedimiento.setInt(1, registro.getEmpleadoId());
-        procedimiento.setString(2, registro.getNombreEmpleado());
-        procedimiento.setString(3, registro.getApellidoEmpleado());
-        procedimiento.setDouble(4, registro.getSueldo());
-        procedimiento.setTime(5, registro.getHoraEntrada());
-        procedimiento.setTime(6, registro.getHoraSalida());
-        procedimiento.setInt(7, registro.getCargoId());
-        procedimiento.execute();
-        listaEmpleados.add(registro);
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-}
 
     public void eliminar() {
         switch (tipoDeOperaciones) {
@@ -314,44 +312,44 @@ public class MenuEmpleadosController implements Initializable {
     public void actualizar() {
         try {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_editarEmpleado(?, ?, ?, ?, ?, ?, ?) }");
-        Empleados registro = (Empleados) tblEmpleados.getSelectionModel().getSelectedItem();
-        registro.setEmpleadoId(Integer.parseInt(txtEmpleadoID.getText()));
-        registro.setCargoId(((Cargos) cmbCargoID.getSelectionModel().getSelectedItem()).getCargoId());
-        registro.setNombreEmpleado(txtNombreE.getText());
-        registro.setApellidoEmpleado(txtApellidoE.getText());
-        registro.setSueldo(Double.parseDouble(txtSueldoE.getText()));
+            Empleados registro = (Empleados) tblEmpleados.getSelectionModel().getSelectedItem();
+            registro.setEmpleadoId(Integer.parseInt(txtEmpleadoID.getText()));
+            registro.setCargoId(((Cargos) cmbCargoID.getSelectionModel().getSelectedItem()).getCargoId());
+            registro.setNombreEmpleado(txtNombreE.getText());
+            registro.setApellidoEmpleado(txtApellidoE.getText());
+            registro.setSueldo(Double.parseDouble(txtSueldoE.getText()));
 
-        // Obtener las horas de entrada y salida desde los JFXTimePicker
-        LocalTime horaEntradaLocal = txtHoraEntradaE.getValue();
-        LocalTime horaSalidaLocal = txtHoraSalidaE.getValue();
+            // Obtener las horas de entrada y salida desde los JFXTimePicker
+            LocalTime horaEntradaLocal = txtHoraEntradaE.getValue();
+            LocalTime horaSalidaLocal = txtHoraSalidaE.getValue();
 
-        // Verificar que no sean nulos antes de convertirlos a Time
-        if (horaEntradaLocal != null && horaSalidaLocal != null) {
-            Time horaEntrada = Time.valueOf(horaEntradaLocal);
-            Time horaSalida = Time.valueOf(horaSalidaLocal);
-            registro.setHoraEntrada(horaEntrada);
-            registro.setHoraSalida(horaSalida);
-        } else {
-            // Manejar el caso donde los tiempos no están seleccionados
-            JOptionPane.showMessageDialog(null, "Debe seleccionar las horas de entrada y salida.");
-            return;
+            // Verificar que no sean nulos antes de convertirlos a Time
+            if (horaEntradaLocal != null && horaSalidaLocal != null) {
+                Time horaEntrada = Time.valueOf(horaEntradaLocal);
+                Time horaSalida = Time.valueOf(horaSalidaLocal);
+                registro.setHoraEntrada(horaEntrada);
+                registro.setHoraSalida(horaSalida);
+            } else {
+                // Manejar el caso donde los tiempos no están seleccionados
+                JOptionPane.showMessageDialog(null, "Debe seleccionar las horas de entrada y salida.");
+                return;
+            }
+
+            procedimiento.setInt(1, registro.getEmpleadoId());
+            procedimiento.setString(2, registro.getNombreEmpleado());
+            procedimiento.setString(3, registro.getApellidoEmpleado());
+            procedimiento.setDouble(4, registro.getSueldo());
+            procedimiento.setTime(5, registro.getHoraEntrada());
+            procedimiento.setTime(6, registro.getHoraSalida());
+            procedimiento.setInt(7, registro.getCargoId());
+            procedimiento.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        procedimiento.setInt(1, registro.getEmpleadoId());
-        procedimiento.setString(2, registro.getNombreEmpleado());
-        procedimiento.setString(3, registro.getApellidoEmpleado());
-        procedimiento.setDouble(4, registro.getSueldo());
-        procedimiento.setTime(5, registro.getHoraEntrada());
-        procedimiento.setTime(6, registro.getHoraSalida());
-        procedimiento.setInt(7, registro.getCargoId());
-        procedimiento.execute();
-    } catch (Exception e) {
-        e.printStackTrace();
     }
-}
-    
-    public void reporte(){
-        switch (tipoDeOperaciones){
+
+    public void reporte() {
+        switch (tipoDeOperaciones) {
             case ACTUALIZAR:
                 desactivarControles();
                 limpiarControles();
@@ -391,7 +389,6 @@ public class MenuEmpleadosController implements Initializable {
         txtApellidoE.clear();
         txtSueldoE.clear();
 
-        
     }
 
     public Main getEscenarioPrincipal() {

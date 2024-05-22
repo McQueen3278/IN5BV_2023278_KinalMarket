@@ -81,7 +81,7 @@
                   <Image url="@../images/AgregarF.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnEditar" mnemonicParsing="false" prefHeight="43.0" prefWidth="175.0" text="Editar Factura" GridPane.rowIndex="1">
+            <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#actualizar" prefHeight="43.0" prefWidth="175.0" text="Editar Factura" GridPane.rowIndex="1">
                <stylesheets>
                   <URL value="@../resources/KinalMarketCSS.css" />
                   <URL value="@../resources/KinalMarketCSS.css" />
@@ -111,7 +111,7 @@
                   <Image url="@../images/EliminarF.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnReporte" mnemonicParsing="false" prefHeight="44.0" prefWidth="176.0" text="Reportes" GridPane.rowIndex="3">
+            <Button fx:id="btnReporte" mnemonicParsing="false" onAction="#reporte" prefHeight="44.0" prefWidth="176.0" text="Reportes" GridPane.rowIndex="3">
                <stylesheets>
                   <URL value="@../resources/KinalMarketCSS.css" />
                   <URL value="@../resources/KinalMarketCSS.css" />
@@ -128,7 +128,7 @@
             </ImageView>
          </children>
       </GridPane>
-      <TableView fx:id="tblFacturas" layoutX="221.0" layoutY="269.0" prefHeight="272.0" prefWidth="651.0">
+      <TableView fx:id="tblFacturas" layoutX="221.0" layoutY="269.0" onMouseClicked="#seleccionarElemento" prefHeight="272.0" prefWidth="651.0">
         <columns>
           <TableColumn fx:id="colFacturaID" prefWidth="75.0" text="facturaId" />
           <TableColumn fx:id="colFecha" prefWidth="84.0" text="facha" />
