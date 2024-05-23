@@ -20,7 +20,7 @@
             <items>
                   <MenuItem fx:id="btnMenuCargos" mnemonicParsing="false" onAction="#buttonHandleEvent" text="Cargos" />
                   <MenuItem fx:id="btnMenuCompras" mnemonicParsing="false" onAction="#buttonHandleEvent" text="Compras" />
-              <MenuItem mnemonicParsing="false" text="Productos" />
+              <MenuItem fx:id="btnMenuProductos" mnemonicParsing="false" onAction="#buttonHandleEvent" text="Productos" />
                   <MenuItem fx:id="btnMenuTipoProducto" mnemonicParsing="false" onAction="#buttonHandleEvent" text="Tipo de Producto" />
                   <MenuItem fx:id="btnMenuProveedores" mnemonicParsing="false" onAction="#buttonHandleEvent" text="Proveedores" />
                   <MenuItem fx:id="btnMenuClientes" mnemonicParsing="false" onAction="#buttonHandleEvent" text="Clientes" />
@@ -32,6 +32,8 @@
               <MenuItem fx:id="btnMenuFacturas" mnemonicParsing="false" onAction="#buttonHandleEvent" text="Factura" />
                   <MenuItem mnemonicParsing="false" text="Inventario" />
                   <MenuItem mnemonicParsing="false" text="Salario" />
+                  <MenuItem fx:id="btnMenuTProveedor" mnemonicParsing="false" onAction="#buttonHandleEvent" text="Telefono Proveedor" />
+                  <MenuItem fx:id="btnMenuEmail" mnemonicParsing="false" onAction="#buttonHandleEvent" text="Email Proveedores" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Acerca de ">

@@ -12,10 +12,13 @@ import javafx.stage.Stage;
 import org.harolrodriguez.controller.MenuCargosController;
 import org.harolrodriguez.controller.MenuClientesController;
 import org.harolrodriguez.controller.MenuComprasController;
+import org.harolrodriguez.controller.MenuEmailProveedorController;
 import org.harolrodriguez.controller.MenuEmpleadosController;
 import org.harolrodriguez.controller.MenuFacturasController;
 import org.harolrodriguez.controller.MenuPrincipalController;
+import org.harolrodriguez.controller.MenuProductoController;
 import org.harolrodriguez.controller.MenuProveedoresController;
+import org.harolrodriguez.controller.MenuTelefonoProveedorController;
 import org.harolrodriguez.controller.MenuTipoProductoController;
 import org.harolrodriguez.controller.ProgramadorController;
 
@@ -139,6 +142,36 @@ public class Main extends Application {
             MenuFacturasController menuFacturasView = (MenuFacturasController) cambiarEscena("MenuFacturasView.fxml", 878, 550);
                 menuFacturasView.setEscenarioPrincipal(this);
                 this.escenarioPrincipal.setTitle("Facturas");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+      
+      public void menuTelefonoProveedorView(){
+       try {
+            MenuTelefonoProveedorController menuTelefonoProveedorView = (MenuTelefonoProveedorController) cambiarEscena("MenuTelefonoProveedorView.fxml", 1012, 610);
+                menuTelefonoProveedorView.setEscenarioPrincipal(this);
+                this.escenarioPrincipal.setTitle("Telefono Proveedor");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+      
+       public void menuEmailProveedorView(){
+       try {
+            MenuEmailProveedorController menuTelefonoProveedorView = (MenuEmailProveedorController) cambiarEscena("MenuEmailProveedorView.fxml", 865, 540);
+                menuTelefonoProveedorView.setEscenarioPrincipal(this);
+                this.escenarioPrincipal.setTitle("Email Proveedor");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+       
+       public void menuProductoView(){
+       try {
+            MenuProductoController menuProductoView = (MenuProductoController) cambiarEscena("MenuProductoView.fxml", 1295, 807);
+                menuProductoView.setEscenarioPrincipal(this);
+                this.escenarioPrincipal.setTitle("Productos");
         } catch (Exception e) {
             e.printStackTrace();
         }
