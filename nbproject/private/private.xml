@@ -12,30 +12,11 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/controller/MenuTelefonoProveedorController.java</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/controller/MenuPrincipalController.java</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/controller/MenuProductoController.java</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/controller/MenuComprasController.java</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/bean/TelefonoProveedor.java</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/resources/KinalMarketCSS.css</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/bean/Proveedores.java</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/controller/MenuClientesController.java</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/controller/MenuTipoProductoController.java</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/bean/Cargos.java</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/controller/MenuEmailProveedorController.java</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/controller/MenuProveedoresController.java</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/db/Conexion.java</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/bean/Compras.java</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/controller/MenuFacturasController.java</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/bean/Facturas.java</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/database/DBKinalMarket.sql</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/bean/Productos.java</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/controller/MenuEmpleadosController.java</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/system/Main.java</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/bean/Empleados.java</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/bean/TipoProducto.java</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/bean/Clientes.java</file>
-            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/controller/MenuCargosController.java</file>
+            <file>file:/C:/Users/informatica/Desktop/KInal_Market/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/database/DBKinalMarket.sql</file>
+            <file>file:/C:/Users/informatica/Desktop/KInal_Market/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/controller/MenuEmpleadosController.java</file>
+            <file>file:/C:/Users/informatica/Desktop/KInal_Market/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/controller/MenuProductoController.java</file>
+            <file>file:/C:/Users/informatica/Desktop/KInal_Market/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/controller/MenuComprasController.java</file>
+            <file>file:/C:/Users/informatica/Desktop/KInal_Market/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/db/Conexion.java</file>
         </group>
     </open-files>
 </project-private>

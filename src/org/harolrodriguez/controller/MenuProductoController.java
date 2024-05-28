@@ -17,6 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.harolrodriguez.bean.Productos;
 import org.harolrodriguez.bean.Proveedores;
@@ -190,6 +191,81 @@ public class MenuProductoController implements Initializable {
 
         return listaTipoProducto = FXCollections.observableArrayList(lista);
     }
+    
+    public void Agregar() {
+        switch (tipoDeOperaciones) {
+            case NINGUNO:
+                activarControles();
+                btnAgregar.setText("Guardar");
+                btnEliminar.setText("Cancelar");
+                btnEditar.setDisable(true);
+                btnReporte.setDisable(true);
+                imgAgregar.setImage(new Image("/org/harolrodriguez/images/Guardar.png"));
+                imgEliminar.setImage(new Image("/org/harolrodriguez/images/Cancelar.png"));
+                tipoDeOperaciones = operaciones.ACTUALIZAR;
+                cargaDatos();
+                break;
+            case ACTUALIZAR:
+                guardar();
+                activarControles();
+                limpiarControles();
+                btnAgregar.setText("Agregar");
+                btnEliminar.setText("Eliminar");
+                btnEditar.setDisable(false);
+                btnReporte.setDisable(false);
+                imgAgregar.setImage(new Image("/org/harolrodriguez/images/CarritoC.png"));
+                imgEliminar.setImage(new Image("/org/harolrodriguez/images/EliminarCarrito.png"));
+                tipoDeOperaciones = operaciones.NINGUNO;
+                cargaDatos();
+                break;
+        }
+
+    }
+    
+    public void guardar(){
+        Productos registro = new Productos();
+        registro.setProductoId(Integer.parseInt(txtPID.getText()));
+        registro.setCodigoProveedor(((Proveedores)cmbProveedor.getSelectionModel().getSelectedItem()).getCodigoProveedor());
+        registro.setCategoriaProductoId(((TipoProducto)cmbTipoP.getSelectionModel().getSelectedItem()).getCategoriaProductoId());
+        registro.setNombreProducto(txtNombreP.getText());
+        registro.setDescripcionProducto(txtDescripcion.getText());
+        
+        
+    }
+    
+    public void desactivarControles() {
+        txtPID.setEditable(false);
+        txtNombreP.setEditable(false);
+        txtDescripcion.setEditable(false);
+        txtCantidad.setEditable(false);
+        txtPrecioU.setEditable(false);
+        txtPrecioM.setEditable(false);
+        txtPrecioCompra.setEditable(false);
+    }
+
+    public void activarControles() {
+        txtPID.setEditable(true);
+        txtNombreP.setEditable(true);
+        txtDescripcion.setEditable(true);
+        txtCantidad.setEditable(true);
+        txtPrecioU.setEditable(true);
+        txtPrecioM.setEditable(true);
+        txtPrecioCompra.setEditable(true);
+    }
+
+    public void limpiarControles() {
+        txtPID.clear();
+        txtNombreP.clear();
+        txtDescripcion.clear();
+        txtCantidad.clear();
+        txtPrecioU.clear();
+        txtPrecioM.clear();
+        txtPrecioCompra.clear();
+    }
+
+    
+
+   
 
     public Main getEscenarioPrincipal() {
         return escenarioPrincipal;
