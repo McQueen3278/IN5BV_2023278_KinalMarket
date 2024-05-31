@@ -5,7 +5,7 @@ use DBKinalMarket;
 
 -- Se crea la entidad Clientes
 create table Clientes(
-	codigoCliente int not null,
+	CodigoCliente int not null,
 	NITcliente varchar(10) not null,
 	nombreCliente varchar(50)not null,
 	apellidoCliente varchar(50) not null,
@@ -152,12 +152,12 @@ create table detalleCompra (
 -- -------------------- Clientes --------------------------------------
 -- ---------------------------------------- Agregar Clientes ---------------------------------------------------------------------------------
 Delimiter $$
-	create procedure sp_agregarCliente (in codigoCliente int, NITcliente varchar(10), in nombreCliente varchar(50), in apellidoCliente varchar(50),
+	create procedure sp_agregarCliente (in CodigoCliente int, NITcliente varchar(10), in nombreCliente varchar(50), in apellidoCliente varchar(50),
     in direccionCliente varchar(250), in telefonoCliente varchar(8), in correoCliente varchar(45))
 		Begin 
-			Insert into Clientes (codigoCliente, NITCliente, nombreCliente, apellidoCliente, direccionCliente,
+			Insert into Clientes (CodigoCliente, NITCliente, nombreCliente, apellidoCliente, direccionCliente,
             telefonoCliente, correoCliente) values
-            (codigoCliente, NITCliente, nombreCliente, apellidoCliente, direccionCliente,
+            (CodigoCliente, NITCliente, nombreCliente, apellidoCliente, direccionCliente,
             telefonoCliente, correoCliente);
 	end $$
 Delimiter ;
@@ -168,7 +168,7 @@ Delimiter $$
 	create procedure sp_ListarClientes()
 		Begin
 			select
-            C.codigoCliente,
+            C.CodigoCliente,
             C.NITCliente,
             C.nombreCliente,
             C.apellidoCliente,
@@ -184,7 +184,7 @@ Delimiter $$
 	create procedure sp_BuscarClientes (in cID int)
 		Begin
 			select
-            C.codigoCliente,
+            C.CodigoCliente,
             C.NITCliente,
             C.apellidoCliente,
             C.direccionCliente,
@@ -196,12 +196,12 @@ Delimiter ;
 call sp_BuscarClientes(01);
 -- -----------------------------------------------Editar Clientes ------------------------------------------------------
 Delimiter $$
-	Create procedure sp_EditarCliente(in _codigoCliente int, _NITcliente varchar(10), in _nombreCliente varchar(50), in _apellidoCliente varchar(50),
+	Create procedure sp_EditarCliente(in _CodigoCliente int, _NITcliente varchar(10), in _nombreCliente varchar(50), in _apellidoCliente varchar(50),
     in _direccionCliente varchar(250), in _telefonoCliente varchar(8), in _correoCliente varchar(45))
 		Begin
 			update Clientes C
 				set
-                C.codigoCliente = _codigoCliente,
+                C.CodigoCliente = _CodigoCliente,
                 C.NITcliente = _NITcliente,
                 C.nombreCliente = _nombreCliente,
                 C.apellidoCliente = _apellidoCliente,

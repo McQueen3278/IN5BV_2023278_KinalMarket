@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTimePicker?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -49,10 +49,10 @@
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="118.0" text="Codigo Cliente:" GridPane.columnIndex="4" GridPane.rowIndex="1" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="81.0" text="ID Empleado:" GridPane.columnIndex="4" GridPane.rowIndex="2" />
             <TextField fx:id="txtApellidoC" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-            <JFXDatePicker fx:id="dtpFechaF" defaultColor="#93d92b" styleClass="button4" stylesheets="@../resources/KinalMarketCSS.css" GridPane.columnIndex="3" />
             <JFXTimePicker fx:id="dtmHoraF" defaultColor="#93d92b" styleClass="button4" stylesheets="@../resources/KinalMarketCSS.css" GridPane.columnIndex="3" GridPane.rowIndex="2" />
             <ComboBox fx:id="cmbCliente" prefWidth="150.0" styleClass="button2" stylesheets="@../resources/KinalMarketCSS.css" GridPane.columnIndex="5" GridPane.rowIndex="1" />
             <ComboBox fx:id="cmbEmpleado" prefWidth="150.0" styleClass="button2" stylesheets="@../resources/KinalMarketCSS.css" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <DatePicker fx:id="dtpFechaF" styleClass="button4" stylesheets="@../resources/KinalMarketCSS.css" GridPane.columnIndex="3" />
          </children>
       </GridPane>
       <GridPane layoutX="38.0" layoutY="284.0" prefHeight="224.0" prefWidth="205.0">

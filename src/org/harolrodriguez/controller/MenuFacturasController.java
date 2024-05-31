@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -57,7 +58,7 @@ public class MenuFacturasController implements Initializable {
     @FXML
     private TextField txtApellidoC;
     @FXML
-    private JFXDatePicker dtpFechaF;
+    private DatePicker dtpFechaF;
     @FXML
     private JFXTimePicker dtmHoraF;
     @FXML
@@ -110,7 +111,7 @@ public class MenuFacturasController implements Initializable {
         colFecha.setCellValueFactory(new PropertyValueFactory<Facturas, LocalDate>("facha"));
         colHora.setCellValueFactory(new PropertyValueFactory<Facturas, Time>("hora"));
         colTotal.setCellValueFactory(new PropertyValueFactory<Facturas, Double>("total"));
-        colClientes.setCellValueFactory(new PropertyValueFactory<Facturas, Integer>("codigoCliente"));
+        colClientes.setCellValueFactory(new PropertyValueFactory<Facturas, Integer>("CodigoCliente"));
         colEmpleados.setCellValueFactory(new PropertyValueFactory<Facturas, Integer>("empleadoId"));
     }
 
@@ -130,7 +131,7 @@ public class MenuFacturasController implements Initializable {
             ResultSet registro = procedimiento.executeQuery();
             while (registro.next()) {
                 resultado = new Clientes(
-                        registro.getInt("codigoCliente"),
+                        registro.getInt("CodigoCliente"),
                         registro.getString("NITCliente"),
                         registro.getString("nombreCliente"),
                         registro.getString("apellidoCliente"),
@@ -268,7 +269,7 @@ public class MenuFacturasController implements Initializable {
     public void guardar() {
         Facturas registro = new Facturas();
         registro.setFacturaId(Integer.parseInt(txtFacturaID.getText()));
-        registro.setCodigoCliente(((Clientes) cmbCliente.getSelectionModel().getSelectedItem()).getCodigoCliente());
+        registro.setCodigoCliente(((Clientes) cmbCliente.getSelectionModel().getSelectedItem())).getCodigoCliente();
         registro.setEmpleadoId(((Empleados) cmbEmpleado.getSelectionModel().getSelectedItem()).getEmpleadoId());
         registro.setTotal(Double.parseDouble(txtTotalF.getText()));
         LocalDate fechaSeleccionada = dtpFechaF.getValue();

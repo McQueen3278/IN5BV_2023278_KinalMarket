@@ -70,7 +70,7 @@ public class MenuClientesController implements Initializable {
     
     public void cargarDatos(){
         tblClientes.setItems(getClientes());
-        colCodigoC.setCellValueFactory(new PropertyValueFactory<Clientes, Integer>("codigoCliente"));
+        colCodigoC.setCellValueFactory(new PropertyValueFactory<Clientes, Integer>("CodigoCliente"));
         colNITC.setCellValueFactory(new PropertyValueFactory<Clientes, String>("NITcliente"));
         colNombreC.setCellValueFactory(new PropertyValueFactory<Clientes, String>("nombreCliente"));
         colApellidoC.setCellValueFactory(new PropertyValueFactory<Clientes, String>("apellidoCliente"));
@@ -95,7 +95,7 @@ public class MenuClientesController implements Initializable {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ListarClientes()}");
             ResultSet resultado = procedimiento.executeQuery();
             while(resultado.next()){
-                lista.add(new Clientes(resultado.getInt("codigoCliente"),
+                lista.add(new Clientes(resultado.getInt("CodigoCliente"),
                         resultado.getString("NITcliente"),
                         resultado.getString("nombreCliente"),
                         resultado.getString("apellidoCliente"),

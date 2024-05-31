@@ -33,7 +33,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button fx:id="btnAgregar" mnemonicParsing="false" prefHeight="44.0" prefWidth="174.0" text="Agregar Producto">
+            <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#Agregar" prefHeight="44.0" prefWidth="174.0" text="Agregar Producto">
                <stylesheets>
                   <URL value="@../resources/KinalMarketCSS.css" />
                   <URL value="@../resources/KinalMarketCSS.css" />
@@ -48,7 +48,7 @@
                   <Image url="@../images/CarritoC.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnEditar" mnemonicParsing="false" prefHeight="43.0" prefWidth="175.0" text="Editar Producto" GridPane.rowIndex="1">
+            <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#editar" prefHeight="43.0" prefWidth="175.0" text="Editar Producto" GridPane.rowIndex="1">
                <stylesheets>
                   <URL value="@../resources/KinalMarketCSS.css" />
                   <URL value="@../resources/KinalMarketCSS.css" />
@@ -63,7 +63,7 @@
                   <Image url="@../images/EditarC.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnEliminar" mnemonicParsing="false" prefHeight="44.0" prefWidth="175.0" text="Eliminar Peoducto" GridPane.rowIndex="2">
+            <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#eliminar" prefHeight="44.0" prefWidth="175.0" text="Eliminar Peoducto" GridPane.rowIndex="2">
                <stylesheets>
                   <URL value="@../resources/KinalMarketCSS.css" />
                   <URL value="@../resources/KinalMarketCSS.css" />
@@ -78,7 +78,7 @@
                   <Image url="@../images/EliminarCarrito.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnReporte" mnemonicParsing="false" prefHeight="44.0" prefWidth="176.0" text="Reportes" GridPane.rowIndex="3">
+            <Button fx:id="btnReporte" mnemonicParsing="false" onAction="#reporte" prefHeight="44.0" prefWidth="176.0" text="Reportes" GridPane.rowIndex="3">
                <stylesheets>
                   <URL value="@../resources/KinalMarketCSS.css" />
                   <URL value="@../resources/KinalMarketCSS.css" />
@@ -95,7 +95,7 @@
             </ImageView>
          </children>
       </GridPane>
-      <GridPane layoutX="418.0" layoutY="128.0" prefHeight="178.0" prefWidth="715.0">
+      <GridPane layoutX="397.0" layoutY="124.0" prefHeight="182.0" prefWidth="736.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="152.0" minWidth="10.0" prefWidth="124.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="244.0" minWidth="10.0" prefWidth="127.0" />

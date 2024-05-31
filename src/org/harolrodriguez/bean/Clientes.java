@@ -1,7 +1,7 @@
 package org.harolrodriguez.bean;
 
 public class Clientes {
-    private int  codigoCliente;
+    private int  CodigoCliente;
     private String NITcliente;
     private String nombreCliente;
     private String apellidoCliente;
@@ -13,8 +13,8 @@ public class Clientes {
         
     }
 
-    public Clientes(int codigoCliente, String NITcliente, String nombreCliente, String apellidoCliente, String direccionCliente, String telefonoCliente, String correoCliente) {
-        this.codigoCliente = codigoCliente;
+    public Clientes(int CodigoCliente, String NITcliente, String nombreCliente, String apellidoCliente, String direccionCliente, String telefonoCliente, String correoCliente) {
+        this.CodigoCliente = CodigoCliente;
         this.NITcliente = NITcliente;
         this.nombreCliente = nombreCliente;
         this.apellidoCliente = apellidoCliente;
@@ -26,11 +26,11 @@ public class Clientes {
     
 
     public int getCodigoCliente() {
-        return codigoCliente;
+        return CodigoCliente;
     }
 
     public void setCodigoCliente(int codigoCliente) {
-        this.codigoCliente = codigoCliente;
+        this.CodigoCliente = codigoCliente;
     }
 
     public String getNITcliente() {
