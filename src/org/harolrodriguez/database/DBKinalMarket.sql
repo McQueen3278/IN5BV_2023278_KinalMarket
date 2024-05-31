@@ -61,7 +61,6 @@ Create table Empleados (
     horaEntrada time ,
     horaSalida time,
     cargoId int ,
-    encargadoId int,
     primary key PK_empleadoId (empleadoId) ,
     constraint FK_Cargos_Empleados foreign key (cargoId)
 		references Cargos(cargoId)
@@ -468,14 +467,14 @@ call sp_eliminarCargo(01);
 -- ------------------------------------------------ Agregar Empleados ---------------------------------------------------------------------
 Delimiter $$
 	Create procedure sp_agregarEmpleados(in empleadoId int, in nombreEmpleado varchar (30), in apellidoEmpleado varchar(30), in  sueldo decimal(10,2),
-    in horaEntrada time, in horaSalida time, in cargoId int, in encargadoId int)
+    in horaEntrada time, in horaSalida time, in cargoId int)
 		Begin
-			Insert Into Empleados(empleadoId, nombreEmpleado, apellidoEmpleado, sueldo, horaEntrada, horaSalida, cargoId, encargadoId)
-             values (empleadoId, nombreEmpleado, apellidoEmpleado, sueldo, horaEntrada, horaSalida, cargoId, encargadoId);
+			Insert Into Empleados(empleadoId, nombreEmpleado, apellidoEmpleado, sueldo, horaEntrada, horaSalida, cargoId)
+             values (empleadoId, nombreEmpleado, apellidoEmpleado, sueldo, horaEntrada, horaSalida, cargoId);
 		End$$
 Delimiter ;
-call sp_agregarEmpleados(01, 'Juan', 'Perez', 2000.00, '08:00:00', '17:00:00', 02, 01);
-call sp_agregarEmpleados(02, 'María', 'González', 1800.00, '09:00:00', '18:00:00', 02, 01);
+call sp_agregarEmpleados(01, 'Juan', 'Perez', 2000.00, '08:00:00', '17:00:00', 02 );
+call sp_agregarEmpleados(02, 'María', 'González', 1800.00, '09:00:00', '18:00:00', 02);
 -- -------------------------------------------------- Listar empleados ----------------------------------------------------------------------
 Delimiter $$
 Create procedure sp_listarEmpleados()
@@ -487,8 +486,7 @@ Create procedure sp_listarEmpleados()
             E.sueldo,
             E.horaEntrada,
             E.horaSalida,
-            E.cargoId,
-            E.encargadoId
+            E.cargoId
         from Empleados E;
     End $$
 Delimiter ;
@@ -504,8 +502,7 @@ Create procedure sp_buscarEmpleados(in eID int)
             E.sueldo,
             E.horaEntrada,
             E.horaSalida,
-            E.cargoId,
-            E.encargadoId
+            E.cargoId
         from Empleados E;
     End $$
 Delimiter ;
@@ -513,7 +510,7 @@ call sp_buscarEmpleados(01);
 -- ----------------------------------------------Editar Empleado -----------------------------------------------------------------------------------
 Delimiter $$
 Create procedure sp_editarEmpleado(in _empleadoId int, in _nombreEmpleado varchar(30), in _apellidoEmpleado varchar(30), in _sueldo decimal(10,2), 
-in _horaEntrada time, in _horaSalida time, in _cargoId int, in _encargadoId int)
+in _horaEntrada time, in _horaSalida time, in _cargoId int)
     Begin
         Update Empleados E
             Set
@@ -522,12 +519,11 @@ in _horaEntrada time, in _horaSalida time, in _cargoId int, in _encargadoId int)
             E.sueldo = _sueldo,
             E.horaEntrada = _horaEntrada,
             E.horaSalida = _horaSalida,
-            E.cargoId = _cargoId,
-            E.encargadoId = _encargadoId
+            E.cargoId = _cargoId
             where E.empleadoId = _empleadoId;
     End$$
 Delimiter ;
-call sp_editarEmpleado(01, 'Juan', 'López', 2500.00, '08:30:00', '17:30:00', 02, 01);
+call sp_editarEmpleado(01, 'Juan', 'López', 2500.00, '08:30:00', '17:30:00', 02);
 -- -------------------------------------------------- Eliminar empleado ----------------------------------------------------------------------------------------
 Delimiter $$
 Create procedure sp_eliminarEmpleado(in empID int)
