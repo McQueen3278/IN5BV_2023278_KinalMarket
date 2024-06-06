@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.harolrodriguez.controller.DetalleFacturaController;
@@ -42,12 +43,9 @@ public class Main extends Application {
         this.escenarioPrincipal = escenarioPrincipal;
         this.escenarioPrincipal.setTitle("Kinal Market");
         menuPrincipalView();
-        //Image image = new Image("org/harolrodriguez/images/LogoP.png");
+       
+         this.escenarioPrincipal.getIcons().add(new Image(getClass().getResourceAsStream("/org/harolrodriguez/images/LogoP.jpeg")));
         
-        //escenarioPrincipal.getIcons().add(image);
-//        Parent root = FXMLLoader.load(getClass().getResource("/org/harolrodriguez/view/MenuPrincipalView.fxml"));
-//        Scene escena = new Scene(root);
-//        escenarioPrincipal.setScene(escena);
         escenarioPrincipal.show();
 
     }

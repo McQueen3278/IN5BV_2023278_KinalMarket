@@ -20,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javax.swing.JOptionPane;
 import org.harolrodriguez.bean.DetalleFactura;
 import org.harolrodriguez.bean.Facturas;
@@ -66,6 +67,10 @@ public class DetalleFacturaController implements Initializable {
     @FXML
     private TableColumn colProducto;
 
+    @FXML
+    private void clickAtras(MouseEvent event) {
+    }
+
     private enum operaciones {
         AGREGAR, ELIMINAR, EDITAR, ACTUALIZAR, CANCELAR, NINGUNO
     }
@@ -88,6 +93,7 @@ public class DetalleFacturaController implements Initializable {
         colProducto.setCellValueFactory(new PropertyValueFactory<DetalleFactura, Integer>("productoId"));
     }
 
+    @FXML
     public void seleccionarElemento() {
         txtDetalleFacturaID.setText(String.valueOf(((DetalleFactura) tblDeltalleFactura.getSelectionModel().getSelectedItem()).getDetalleFacturaId()));
     }
@@ -159,6 +165,7 @@ public class DetalleFacturaController implements Initializable {
 
     }
 
+    @FXML
     public void Agregar() {
         switch (tipoDeOperaciones) {
             case NINGUNO:
@@ -206,6 +213,7 @@ public class DetalleFacturaController implements Initializable {
         }
     }
 
+    @FXML
     public void eliminar() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:
@@ -240,6 +248,7 @@ public class DetalleFacturaController implements Initializable {
         }
     }
 
+    @FXML
     public void editar() {
         switch (tipoDeOperaciones) {
             case NINGUNO:
@@ -289,6 +298,7 @@ public class DetalleFacturaController implements Initializable {
         }
     }
 
+    @FXML
     public void reporte() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:
@@ -324,6 +334,7 @@ public class DetalleFacturaController implements Initializable {
         this.escenarioPrincipal = escenarioPrincipal;
     }
 
+    @FXML
     public void clickAtras(ActionEvent event) throws IOException {
         if (event.getSource() == btnBack) {
             escenarioPrincipal.menuPrincipalView();

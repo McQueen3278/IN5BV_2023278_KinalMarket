@@ -920,3 +920,62 @@ Delimiter $$
 		End$$
 Delimiter ;
 call sp_eliminarDetalleCompra(01);
+
+-- Trigger para actualizar precios en Productos basado en DetalleCompra
+DELIMITER $$
+CREATE TRIGGER trg_actualizar_prices AFTER INSERT ON DetalleCompra
+FOR EACH ROW
+BEGIN
+    DECLARE unit_price DECIMAL(10, 2);
+    DECLARE dozen_price DECIMAL(10, 2);
+    DECLARE bulk_price DECIMAL(10, 2);
+    
+    SELECT precioCompra INTO unit_price FROM Productos WHERE productoId = NEW.productoId;
+    
+    SET dozen_price = unit_price * 1.35;  -- 35% de ganancia
+    SET bulk_price = unit_price * 1.25;   -- 25% de ganancia
+    SET unit_price = unit_price * 1.40;   -- 40% de ganancia
+    
+    UPDATE Productos 
+    SET 
+        precioVentaUnitario = unit_price,
+        precioVentaMayor = dozen_price,
+        precioCompra = bulk_price
+    WHERE productoId = NEW.productoId;
+END$$
+DELIMITER ;
+
+-- Trigger para actualizar la existencia en Productos basado en DetalleCompra
+DELIMITER $$
+CREATE TRIGGER trg_actualizar_stock AFTER INSERT ON DetalleCompra
+FOR EACH ROW
+BEGIN
+    UPDATE Productos 
+    SET cantidadStock = cantidadStock + NEW.cantidadCompra
+    WHERE productoId = NEW.productoId;
+END$$
+DELIMITER ;
+
+-- Trigger para calcular el total de la compra en Compras
+DELIMITER $$
+CREATE TRIGGER trg_calcular_total AFTER INSERT ON DetalleCompra
+FOR EACH ROW
+BEGIN
+    UPDATE Compras
+    SET totalCompra = totalCompra + (SELECT SUM(cantidadCompra * precioCompra) FROM DetalleCompra WHERE compraId = NEW.compraId)
+    WHERE compraId = NEW.compraId;
+END$$
+DELIMITER ;
+
+
+
+-- Trigger para calcular el total de la factura en Factura
+DELIMITER $$
+CREATE TRIGGER trg_calcular_total_factura AFTER INSERT ON DetalleFactura
+FOR EACH ROW
+BEGIN
+    UPDATE Facturas
+    SET total = total + (SELECT SUM(cantidad * precioUnitario) FROM DetalleFactura WHERE facturaId = NEW.facturaId)
+    WHERE facturaId = NEW.facturaId;
+END$$
+DELIMITER ;
