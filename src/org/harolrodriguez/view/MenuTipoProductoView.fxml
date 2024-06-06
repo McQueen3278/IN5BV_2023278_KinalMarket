@@ -114,11 +114,11 @@
          </rowConstraints>
          <children>
             <Label alignment="CENTER" prefHeight="24.0" prefWidth="166.0" text="Tipo de Producto ID:" />
-            <TextField fx:id="txtCategoriaPID" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" />
+            <TextField fx:id="txtCategoriaPID" alignment="CENTER" prefHeight="25.0" prefWidth="136.0" promptText="Ingresa el ID..." GridPane.columnIndex="1" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="163.0" text="Nombre de Categoria:" GridPane.rowIndex="1" />
-            <TextField fx:id="txtNombreCa" layoutX="109.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtNombreCa" alignment="CENTER" layoutX="109.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" promptText="Ingresa la Categoria..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="155.0" text="Descripción" GridPane.rowIndex="2" />
-            <TextField fx:id="txtDireccionCa" layoutX="109.0" layoutY="52.0" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtDireccionCa" alignment="CENTER" layoutX="109.0" layoutY="52.0" prefHeight="25.0" prefWidth="136.0" promptText="Ingresa la Descripción..." GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#clickAtras" prefHeight="42.0" prefWidth="87.0">

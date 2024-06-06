@@ -108,11 +108,11 @@
          </rowConstraints>
          <children>
             <Label alignment="CENTER" prefHeight="24.0" prefWidth="182.0" text="ID de Compra:" />
-            <TextField fx:id="txtCompraId" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" />
+            <TextField fx:id="txtCompraId" alignment="CENTER" prefHeight="25.0" prefWidth="136.0" promptText="Ingrese el ID..." GridPane.columnIndex="1" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="175.0" text="Fecha de la Compra:" GridPane.rowIndex="1" />
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="185.0" text="Total de la Compra:" GridPane.rowIndex="2" />
-            <TextField fx:id="txttotalCompra" layoutX="109.0" layoutY="52.0" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <DatePicker fx:id="txtfechaCompra" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txttotalCompra" alignment="CENTER" layoutX="109.0" layoutY="52.0" prefHeight="25.0" prefWidth="136.0" promptText="Ingrese el valor..." GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="txtfechaCompra" nodeOrientation="LEFT_TO_RIGHT" promptText="Seleccione la Fecha.." GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#clickAtras" prefHeight="46.0" prefWidth="90.0">

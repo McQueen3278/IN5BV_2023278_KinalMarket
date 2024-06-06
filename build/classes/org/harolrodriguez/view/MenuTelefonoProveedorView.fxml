@@ -104,7 +104,7 @@
             </ImageView>
          </children>
       </GridPane>
-      <GridPane layoutX="311.0" layoutY="108.0" prefHeight="138.0" prefWidth="564.0">
+      <GridPane layoutX="337.0" layoutY="108.0" prefHeight="138.0" prefWidth="564.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="164.0" minWidth="10.0" prefWidth="126.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="244.0" minWidth="10.0" prefWidth="94.0" />
@@ -120,15 +120,15 @@
          </rowConstraints>
          <children>
             <Label prefHeight="24.0" prefWidth="125.0" text="Telefono Proveedor ID:" />
-            <TextField fx:id="txtCodTP" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" />
+            <TextField fx:id="txtCodTP" prefHeight="25.0" prefWidth="136.0" promptText="Ingresa el ID..." GridPane.columnIndex="1" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="151.0" text="Numero Principal:" GridPane.rowIndex="1" />
-            <TextField fx:id="txtNumeroP" layoutX="109.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtNumeroP" layoutX="109.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" promptText="Ingresa el Numero..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="128.0" text="Numero Secundario:" GridPane.rowIndex="2" />
-            <TextField fx:id="txtNumeroS" layoutX="109.0" layoutY="52.0" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtNumeroS" layoutX="109.0" layoutY="52.0" prefHeight="25.0" prefWidth="136.0" promptText="Ingresa el Numero..." GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="139.0" text="Observaciones" GridPane.columnIndex="2" />
-            <TextField fx:id="txtObservaciones" layoutX="271.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="3" />
+            <TextField fx:id="txtObservaciones" layoutX="271.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" promptText="Ingresa los datos..." GridPane.columnIndex="3" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="139.0" text="Prioveedor ID" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <ComboBox fx:id="cmbProveedor" prefWidth="150.0" styleClass="button6" stylesheets="@../resources/KinalMarketCSS.css" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <ComboBox fx:id="cmbProveedor" prefWidth="150.0" promptText="Seleccione" styleClass="button6" stylesheets="@../resources/KinalMarketCSS.css" GridPane.columnIndex="3" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#clickAtras" prefHeight="51.0" prefWidth="108.0" styleClass="button6" stylesheets="@../resources/KinalMarketCSS.css">

@@ -15,8 +15,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="org.harolrodriguez.controller.MenuEmailProveedorController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.harolrodriguez.controller.MenuEmailProveedorController">
    <children>
       <ImageView fitHeight="540.0" fitWidth="880.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -120,13 +119,13 @@
          </rowConstraints>
          <children>
             <Label prefHeight="24.0" prefWidth="125.0" text="Email Proveedor ID :" />
-            <TextField fx:id="txtCodEP" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" />
+            <TextField fx:id="txtCodEP" prefHeight="25.0" prefWidth="136.0" promptText="Ingrese el ID..." GridPane.columnIndex="1" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="151.0" text="Email " GridPane.rowIndex="1" />
-            <TextField fx:id="txtEmail" layoutX="109.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtEmail" layoutX="109.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" promptText="Ingrese el Email..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="128.0" text="Descripcion" GridPane.rowIndex="2" />
-            <TextField fx:id="txtDescripcion" layoutX="109.0" layoutY="52.0" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtDescripcion" layoutX="109.0" layoutY="52.0" prefHeight="25.0" prefWidth="136.0" promptText="Ingrese los Datos..." GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="139.0" text="Prioveedor ID" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <ComboBox fx:id="cmbProveedor" prefWidth="150.0" styleClass="button6" stylesheets="@../resources/KinalMarketCSS.css" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <ComboBox fx:id="cmbProveedor" prefWidth="150.0" promptText="Seleccione" styleClass="button6" stylesheets="@../resources/KinalMarketCSS.css" GridPane.columnIndex="3" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <Button fx:id="btnBack" layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onAction="#clickAtras" prefHeight="51.0" prefWidth="108.0" styleClass="button6" stylesheets="@../resources/KinalMarketCSS.css">

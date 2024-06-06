@@ -19,6 +19,8 @@ import org.harolrodriguez.system.Main;
 public class MenuPrincipalController implements Initializable {
     private Main escenarioPrincipal;
     
+    @FXML MenuItem btnDetalleCompra;
+    @FXML MenuItem btnDetalleFactura;
     @FXML MenuItem btnMenuProductos;
     @FXML MenuItem btnMenuEmail;
     @FXML MenuItem btnMenuTProveedor;
@@ -71,6 +73,10 @@ public class MenuPrincipalController implements Initializable {
             escenarioPrincipal.menuEmailProveedorView();
         }else if (event.getSource() == btnMenuProductos){
             escenarioPrincipal.menuProductoView();
+        }else if(event.getSource() == btnDetalleFactura){
+            escenarioPrincipal.menuDetalleFacturaView();
+        }else if(event.getSource() == btnDetalleCompra){
+            escenarioPrincipal.menuDetalleCompraView();
         }
         
     }

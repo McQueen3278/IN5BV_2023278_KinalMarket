@@ -119,7 +119,6 @@ public class MenuFacturasController implements Initializable {
         txtFacturaID.setText(String.valueOf(((Facturas) tblFacturas.getSelectionModel().getSelectedItem()).getFacturaId()));
         txtTotalF.setText(String.valueOf(((Facturas) tblFacturas.getSelectionModel().getSelectedItem()).getTotal()));
         cmbCliente.getSelectionModel().select(buscarCliente(((Facturas) tblFacturas.getSelectionModel().getSelectedItem()).getCodigoCliente()));
-        cmbEmpleado.getSelectionModel().select(((Facturas) tblFacturas.getSelectionModel().getSelectedItem()).getEmpleadoId());
 
     }
 
@@ -177,7 +176,7 @@ public class MenuFacturasController implements Initializable {
                 java.sql.Date fecha = resultado.getDate("facha");
                 LocalDate fechaF = fecha.toLocalDate();
                 lista.add(new Facturas(resultado.getInt("facturaId"),
-                        resultado.getInt("codigoCliente"),
+                        resultado.getInt("CodigoCliente"),
                         resultado.getInt("empleadoId"),
                         fechaF,
                         resultado.getTime("hora"),
@@ -198,7 +197,7 @@ public class MenuFacturasController implements Initializable {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_ListarClientes()}");
             ResultSet resultado = procedimiento.executeQuery();
             while (resultado.next()) {
-                lista.add(new Clientes(resultado.getInt("codigoCliente"),
+                lista.add(new Clientes(resultado.getInt("CodigoCliente"),
                         resultado.getString("NITcliente"),
                         resultado.getString("nombreCliente"),
                         resultado.getString("apellidoCliente"),
@@ -269,7 +268,7 @@ public class MenuFacturasController implements Initializable {
     public void guardar() {
         Facturas registro = new Facturas();
         registro.setFacturaId(Integer.parseInt(txtFacturaID.getText()));
-        registro.setCodigoCliente(((Clientes) cmbCliente.getSelectionModel().getSelectedItem())).getCodigoCliente();
+        registro.setCodigoCliente(((Clientes) cmbCliente.getSelectionModel().getSelectedItem()).getCodigoCliente());
         registro.setEmpleadoId(((Empleados) cmbEmpleado.getSelectionModel().getSelectedItem()).getEmpleadoId());
         registro.setTotal(Double.parseDouble(txtTotalF.getText()));
         LocalDate fechaSeleccionada = dtpFechaF.getValue();

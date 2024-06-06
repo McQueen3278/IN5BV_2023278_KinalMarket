@@ -103,6 +103,12 @@ public class Productos {
     public void setCategoriaProductoId(int categoriaProductoId) {
         this.categoriaProductoId = categoriaProductoId;
     }
+
+    @Override
+    public String toString() {
+        return getProductoId() + " - " + getNombreProducto();
+    }
+    
     
     
 }

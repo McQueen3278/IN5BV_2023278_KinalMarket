@@ -112,23 +112,23 @@
          </rowConstraints>
          <children>
             <Label alignment="CENTER" prefHeight="24.0" prefWidth="116.0" text="Productp ID : " />
-            <TextField fx:id="txtPID" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" />
+            <TextField fx:id="txtPID" prefHeight="25.0" prefWidth="136.0" promptText="Ingrese el ID..." GridPane.columnIndex="1" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="118.0" text="Nombre Producto :" GridPane.rowIndex="1" />
-            <TextField fx:id="txtNombreP" layoutX="109.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtNombreP" layoutX="109.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" promptText="Ingrese el Nombre..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="140.0" text="Descripcion :" GridPane.rowIndex="2" />
-            <TextField fx:id="txtDescripcion" layoutX="109.0" layoutY="52.0" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtDescripcion" layoutX="109.0" layoutY="52.0" prefHeight="25.0" prefWidth="136.0" promptText="Ingrese los datos.." GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="83.0" text="Cantidad :" textAlignment="CENTER" GridPane.columnIndex="2" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="89.0" text="Precio Unitario" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <TextField fx:id="txtCantidad" layoutX="63.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="3" />
-            <TextField fx:id="txtPrecioU" layoutX="271.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <TextField fx:id="txtCantidad" layoutX="63.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" promptText="Ingrese la Cantidad..." GridPane.columnIndex="3" />
+            <TextField fx:id="txtPrecioU" layoutX="271.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" promptText="Ingrese el Valor..." GridPane.columnIndex="3" GridPane.rowIndex="2" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="76.0" text="Proveedor ID" GridPane.columnIndex="4" GridPane.rowIndex="1" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="81.0" text="Tipo Producto" GridPane.columnIndex="4" GridPane.rowIndex="2" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="89.0" text="Precio Mayor" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <TextField fx:id="txtPrecioM" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <TextField fx:id="txtPrecioM" prefHeight="25.0" prefWidth="136.0" promptText="Ingrese el Valor..." GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="94.0" text="Precio Compra" GridPane.columnIndex="4" />
-            <TextField fx:id="txtPrecioCompra" GridPane.columnIndex="5" />
-            <ComboBox fx:id="cmbProveedor" prefWidth="150.0" styleClass="button2" stylesheets="@../resources/KinalMarketCSS.css" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-            <ComboBox fx:id="cmbTipoP" prefWidth="150.0" styleClass="button2" stylesheets="@../resources/KinalMarketCSS.css" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <TextField fx:id="txtPrecioCompra" promptText="Ingrese el Valor..." GridPane.columnIndex="5" />
+            <ComboBox fx:id="cmbProveedor" prefWidth="150.0" promptText="Seleccione" styleClass="button2" stylesheets="@../resources/KinalMarketCSS.css" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <ComboBox fx:id="cmbTipoP" prefWidth="150.0" promptText="Seleccione" styleClass="button2" stylesheets="@../resources/KinalMarketCSS.css" GridPane.columnIndex="5" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <TableView fx:id="tblProductos" layoutX="273.0" layoutY="404.0" prefHeight="333.0" prefWidth="1005.0">

@@ -113,11 +113,11 @@
          </rowConstraints>
          <children>
             <Label alignment="CENTER" prefHeight="24.0" prefWidth="155.0" text="ID Cargo" />
-            <TextField fx:id="txtCargoID" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" />
+            <TextField fx:id="txtCargoID" alignment="CENTER" prefHeight="25.0" prefWidth="136.0" promptText="Ingrese el ID..." GridPane.columnIndex="1" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="160.0" text="Nombre del Cargo" GridPane.rowIndex="1" />
-            <TextField fx:id="txtNombreCargo" layoutX="109.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtNombreCargo" alignment="CENTER" layoutX="109.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" promptText="Ingrese el Cargo..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="156.0" text="Descripción del Cargo" GridPane.rowIndex="2" />
-            <TextField fx:id="txtDescripcionC" layoutX="109.0" layoutY="52.0" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtDescripcionC" alignment="CENTER" layoutX="109.0" layoutY="52.0" prefHeight="25.0" prefWidth="136.0" promptText="Ingrese la Descripcion..." GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#clickAtras" prefHeight="48.0" prefWidth="94.0" stylesheets="@../resources/KinalMarketCSS.css">

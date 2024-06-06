@@ -83,6 +83,7 @@ public class MenuComprasController implements Initializable {
     public void selecdcionarElemento() {
         txtCompraId.setText(String.valueOf(((Compras) tblCompras.getSelectionModel().getSelectedItem()).getCompraId()));
         txttotalCompra.setText(((Compras) tblCompras.getSelectionModel().getSelectedItem()).getTotalCompra());
+        
     }
 
     public void Agregar() {

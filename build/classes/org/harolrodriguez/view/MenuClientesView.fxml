@@ -118,19 +118,19 @@
         </rowConstraints>
          <children>
             <Label prefHeight="24.0" prefWidth="84.0" text="Codigo Cliente" />
-            <TextField fx:id="txtCodigoC" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" />
+            <TextField fx:id="txtCodigoC" prefHeight="25.0" prefWidth="136.0" promptText="Ingrese el ID..." GridPane.columnIndex="1" />
             <Label text="Telefono" GridPane.rowIndex="1" />
-            <TextField fx:id="txtTelefonoC" layoutX="109.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtTelefonoC" layoutX="109.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" promptText="Ingrese el Telefono..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Direccion" GridPane.rowIndex="2" />
-            <TextField fx:id="txtDireccionC" layoutX="109.0" layoutY="52.0" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtDireccionC" layoutX="109.0" layoutY="52.0" prefHeight="25.0" prefWidth="136.0" promptText="Ingrese la Direccion.." GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="60.0" text="NIT:" textAlignment="CENTER" GridPane.columnIndex="2" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="63.0" text="Correo:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <TextField fx:id="txtNit" layoutX="63.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="3" />
-            <TextField fx:id="txtCorreoC" layoutX="271.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <TextField fx:id="txtNit" layoutX="63.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" promptText="Ingrese el NIT..." GridPane.columnIndex="3" />
+            <TextField fx:id="txtCorreoC" layoutX="271.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" promptText="Ingrese el Correo..." GridPane.columnIndex="3" GridPane.rowIndex="2" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="76.0" text="Nombre:" GridPane.columnIndex="4" GridPane.rowIndex="1" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="81.0" text="Apellido" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <TextField fx:id="txtNombreC" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-            <TextField fx:id="txtApellidoC" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <TextField fx:id="txtNombreC" promptText="Ingrese el Nombre..." GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <TextField fx:id="txtApellidoC" promptText="Ingrese el Apellido..." GridPane.columnIndex="5" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#clickAtras" prefHeight="42.0" prefWidth="59.0">

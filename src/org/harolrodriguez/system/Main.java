@@ -9,9 +9,11 @@ import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.harolrodriguez.controller.DetalleFacturaController;
 import org.harolrodriguez.controller.MenuCargosController;
 import org.harolrodriguez.controller.MenuClientesController;
 import org.harolrodriguez.controller.MenuComprasController;
+import org.harolrodriguez.controller.MenuDetalleCompraController;
 import org.harolrodriguez.controller.MenuEmailProveedorController;
 import org.harolrodriguez.controller.MenuEmpleadosController;
 import org.harolrodriguez.controller.MenuFacturasController;
@@ -172,6 +174,26 @@ public class Main extends Application {
             MenuProductoController menuProductoView = (MenuProductoController) cambiarEscena("MenuProductoView.fxml", 1295, 807);
                 menuProductoView.setEscenarioPrincipal(this);
                 this.escenarioPrincipal.setTitle("Productos");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+       
+       public void menuDetalleFacturaView(){
+       try {
+            DetalleFacturaController menuDetalleFacturaView = (DetalleFacturaController) cambiarEscena("DetalleFacturaView.fxml", 840, 525);
+                menuDetalleFacturaView.setEscenarioPrincipal(this);
+                this.escenarioPrincipal.setTitle("Detalle Factura");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+       
+       public void menuDetalleCompraView(){
+       try {
+            MenuDetalleCompraController menuDetalleCompraView = (MenuDetalleCompraController) cambiarEscena("MenuDetalleCompraView.fxml", 820, 513);
+                menuDetalleCompraView.setEscenarioPrincipal(this);
+                this.escenarioPrincipal.setTitle("Detalle Compra");
         } catch (Exception e) {
             e.printStackTrace();
         }

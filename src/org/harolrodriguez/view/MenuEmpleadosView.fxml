@@ -124,17 +124,17 @@
          </rowConstraints>
          <children>
             <Label alignment="CENTER" prefHeight="24.0" prefWidth="84.0" text="ID Empleado" />
-            <TextField fx:id="txtEmpleadoID" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" />
+            <TextField fx:id="txtEmpleadoID" prefHeight="25.0" prefWidth="136.0" promptText="Ingrese el ID..." GridPane.columnIndex="1" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="102.0" text="Sueldo" GridPane.rowIndex="1" />
-            <TextField fx:id="txtSueldoE" layoutX="109.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtSueldoE" layoutX="109.0" layoutY="16.0" prefHeight="25.0" prefWidth="136.0" promptText="Ingrese el valor..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="86.0" text="Cargo ID" GridPane.rowIndex="2" />
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="97.0" text="Hora de Entrada" textAlignment="CENTER" GridPane.columnIndex="2" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="87.0" text="Hora de Salida" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="76.0" text="Nombre:" GridPane.columnIndex="4" GridPane.rowIndex="1" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="81.0" text="Apellido" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <TextField fx:id="txtNombreE" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-            <TextField fx:id="txtApellidoE" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-            <ComboBox fx:id="cmbCargoID" prefWidth="150.0" stylesheets="@../resources/KinalMarketCSS.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="txtNombreE" promptText="Ingrese el Nombre..." GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <TextField fx:id="txtApellidoE" promptText="Ingrese el Apellido..." GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <ComboBox fx:id="cmbCargoID" prefWidth="150.0" promptText="Seleccione" stylesheets="@../resources/KinalMarketCSS.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <styleClass>
                   <String fx:value="button2" />
                   <String fx:value="button4" />

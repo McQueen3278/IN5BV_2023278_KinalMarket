@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 public class Facturas {
     private int facturaId;
-    private int codigoCliente;
+    private int CodigoCliente;
     private int empleadoId;
     private LocalDate facha;
     private  Time hora ;
@@ -16,9 +16,9 @@ public class Facturas {
         
     }
 
-    public Facturas(int facturaId, int codigoCliente, int empleadoId, LocalDate facha, Time hora, Double total) {
+    public Facturas(int facturaId, int CodigoCliente, int empleadoId, LocalDate facha, Time hora, Double total) {
         this.facturaId = facturaId;
-        this.codigoCliente = codigoCliente;
+        this.CodigoCliente = CodigoCliente;
         this.empleadoId = empleadoId;
         this.facha = facha;
         this.hora = hora;
@@ -34,11 +34,11 @@ public class Facturas {
     }
 
     public int getCodigoCliente() {
-        return codigoCliente;
+        return CodigoCliente;
     }
 
     public void setCodigoCliente(int codigoCliente) {
-        this.codigoCliente = codigoCliente;
+        this.CodigoCliente = codigoCliente;
     }
 
     public int getEmpleadoId() {
@@ -71,6 +71,11 @@ public class Facturas {
 
     public void setTotal(Double total) {
         this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        return " - " + getFacturaId();
     }
 
     
