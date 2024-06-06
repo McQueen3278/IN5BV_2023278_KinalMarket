@@ -269,6 +269,7 @@ public class MenuFacturasController implements Initializable {
         Facturas registro = new Facturas();
         registro.setFacturaId(Integer.parseInt(txtFacturaID.getText()));
         registro.setCodigoCliente(((Clientes) cmbCliente.getSelectionModel().getSelectedItem()).getCodigoCliente());
+        
         registro.setEmpleadoId(((Empleados) cmbEmpleado.getSelectionModel().getSelectedItem()).getEmpleadoId());
         registro.setTotal(Double.parseDouble(txtTotalF.getText()));
         LocalDate fechaSeleccionada = dtpFechaF.getValue();
