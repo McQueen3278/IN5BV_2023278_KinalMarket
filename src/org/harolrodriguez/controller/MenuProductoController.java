@@ -5,6 +5,8 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,6 +26,7 @@ import org.harolrodriguez.bean.Productos;
 import org.harolrodriguez.bean.Proveedores;
 import org.harolrodriguez.bean.TipoProducto;
 import org.harolrodriguez.db.Conexion;
+import org.harolrodriguez.report.GenerarReporte;
 import org.harolrodriguez.system.Main;
 
 /**
@@ -356,6 +359,8 @@ public class MenuProductoController implements Initializable {
     
     public void reporte() {
         switch (tipoDeOperaciones) {
+            case NINGUNO:
+                imprimirReporte();
             case ACTUALIZAR:
                 desactivarControles();
                 limpiarControles();
@@ -368,7 +373,13 @@ public class MenuProductoController implements Initializable {
                 tipoDeOperaciones = operaciones.NINGUNO;
         }
     }
-
+    
+    
+    public void imprimirReporte(){
+         Map parametros = new HashMap();
+         parametros.put("productoId", null);
+         GenerarReporte.mostrarReportes("ReporteProducto.jasper", "Reporte de Producto", parametros);
+    }
 
     public void desactivarControles() {
         txtPID.setEditable(false);

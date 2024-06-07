@@ -10,8 +10,8 @@ create table Clientes(
 	nombreCliente varchar(50)not null,
 	apellidoCliente varchar(50) not null,
 	direccionCliente varchar(250),
-	telefonoCliente varchar(8),
-	correoCliente varchar(45),
+	telefonoCliente varchar(15),
+	correoCliente varchar(250),
 	primary key PK_Clientes(codigoCliente)
 );
 
@@ -153,7 +153,7 @@ create table detalleCompra (
 -- ---------------------------------------- Agregar Clientes ---------------------------------------------------------------------------------
 Delimiter $$
 	create procedure sp_agregarCliente (in CodigoCliente int, NITcliente varchar(10), in nombreCliente varchar(50), in apellidoCliente varchar(50),
-    in direccionCliente varchar(250), in telefonoCliente varchar(8), in correoCliente varchar(45))
+    in direccionCliente varchar(250), in telefonoCliente varchar(15), in correoCliente varchar(250))
 		Begin 
 			Insert into Clientes (CodigoCliente, NITCliente, nombreCliente, apellidoCliente, direccionCliente,
             telefonoCliente, correoCliente) values

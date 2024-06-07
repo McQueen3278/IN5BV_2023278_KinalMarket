@@ -5,6 +5,8 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,6 +23,7 @@ import javafx.scene.image.ImageView;
 import javax.swing.JOptionPane;
 import org.harolrodriguez.bean.Clientes;
 import org.harolrodriguez.db.Conexion;
+import org.harolrodriguez.report.GenerarReporte;
 import org.harolrodriguez.system.Main;
 
 /**
@@ -154,11 +157,11 @@ public class MenuClientesController implements Initializable {
         try{
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_agregarCliente(?,?,?,?,?,?,?) }");
             procedimiento.setInt(1, registro.getCodigoCliente());
-            procedimiento.setString(2,registro.getNombreCliente());
-            procedimiento.setString(3, registro.getApellidoCliente());
-            procedimiento.setString(4, registro.getNITcliente());
-            procedimiento.setString(5, registro.getTelefonoCliente());
-            procedimiento.setString(6, registro.getDireccionCliente());
+            procedimiento.setString(3,registro.getNombreCliente());
+            procedimiento.setString(4, registro.getApellidoCliente());
+            procedimiento.setString(2, registro.getNITcliente());
+            procedimiento.setString(6, registro.getTelefonoCliente());
+            procedimiento.setString(5, registro.getDireccionCliente());
             procedimiento.setString(7, registro.getCorreoCliente());
             procedimiento.execute();
             listaClientes.add(registro);
@@ -256,6 +259,8 @@ public class MenuClientesController implements Initializable {
     
     public void reporte(){
         switch (tipoDeOperaciones){
+            case NINGUNO:
+                imprimirReporte();
             case ACTUALIZAR:
                 desactivarControles();
                 limpiarControles();
@@ -267,6 +272,13 @@ public class MenuClientesController implements Initializable {
                 imgReporte.setImage(new Image("/org/harolrodriguez/images/Reportes.png"));
                 tipoDeOperaciones = operaciones.NINGUNO;
         }
+    }
+    
+    public void imprimirReporte(){
+         Map parametros = new HashMap();
+         parametros.put("CodigoCliente", null);
+         GenerarReporte.mostrarReportes("ReporteClientes.jasper", "Reporte de Clientes", parametros);
+        
     }
     
     public void desactivarControles(){
