@@ -199,8 +199,8 @@ public class DetalleFacturaController implements Initializable {
     public void guardar() {
         DetalleFactura registro = new DetalleFactura();
         registro.setDetalleFacturaId(Integer.parseInt(txtDetalleFacturaID.getText()));
-        registro.setFacturaId(((Facturas) cmbFactura.getSelectionModel().getSelectedItem()).getFacturaId());
-        registro.setProductoId(((Productos) cmbProducto.getSelectionModel().getSelectedItem()).getProductoId());
+            registro.setFacturaId(((Facturas) cmbFactura.getSelectionModel().getSelectedItem()).getFacturaId());
+            registro.setProductoId(((Productos) cmbProducto.getSelectionModel().getSelectedItem()).getProductoId());
         try {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_agregarDetalleFactura(?, ?, ?)}");
             procedimiento.setInt(1, registro.getDetalleFacturaId());

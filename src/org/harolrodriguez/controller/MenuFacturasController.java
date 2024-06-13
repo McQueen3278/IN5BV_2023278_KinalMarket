@@ -8,8 +8,10 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -118,11 +120,11 @@ public class MenuFacturasController implements Initializable {
     public void seleccionarElemento() {
         txtFacturaID.setText(String.valueOf(((Facturas) tblFacturas.getSelectionModel().getSelectedItem()).getFacturaId()));
         txtTotalF.setText(String.valueOf(((Facturas) tblFacturas.getSelectionModel().getSelectedItem()).getTotal()));
-        cmbCliente.getSelectionModel().select(buscarCliente(((Facturas) tblFacturas.getSelectionModel().getSelectedItem()).getCodigoCliente()));
-
+        //cmbCliente.getSelectionModel().select(buscarCliente(((Facturas) tblFacturas.getSelectionModel().getSelectedItem()).getCodigoCliente()));
+        // cmbEmpleado.getSelectionModel().select(buscarEmpleado(((Facturas)tblFacturas.getSelectionModel().getSelectedItem()).getEmpleadoId()));
     }
 
-    public Clientes buscarCliente(int codigoCliente) {
+    /* public Clientes buscarCliente(int codigoCliente) {
         Clientes resultado = null;
         try {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_BuscarClientes(?)}");
@@ -166,7 +168,7 @@ public class MenuFacturasController implements Initializable {
         }
         return resultado;
     }
-
+     */
     public ObservableList<Facturas> getFacturas() {
         ArrayList<Facturas> lista = new ArrayList<>();
         try {
@@ -269,7 +271,7 @@ public class MenuFacturasController implements Initializable {
         Facturas registro = new Facturas();
         registro.setFacturaId(Integer.parseInt(txtFacturaID.getText()));
         registro.setCodigoCliente(((Clientes) cmbCliente.getSelectionModel().getSelectedItem()).getCodigoCliente());
-        
+
         registro.setEmpleadoId(((Empleados) cmbEmpleado.getSelectionModel().getSelectedItem()).getEmpleadoId());
         registro.setTotal(Double.parseDouble(txtTotalF.getText()));
         LocalDate fechaSeleccionada = dtpFechaF.getValue();
@@ -281,11 +283,11 @@ public class MenuFacturasController implements Initializable {
         try {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_agregarFactura(?, ?, ?, ?, ?, ?)}");
             procedimiento.setInt(1, registro.getFacturaId());
-            procedimiento.setInt(2, registro.getCodigoCliente());
-            procedimiento.setInt(3, registro.getEmpleadoId());
-            procedimiento.setDate(4, fecha);
-            procedimiento.setTime(5, registro.getHora());
-            procedimiento.setDouble(6, registro.getTotal());
+            procedimiento.setDate(2, Date.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(fecha)));
+            procedimiento.setTime(3, registro.getHora());
+            procedimiento.setDouble(4, registro.getTotal());
+            procedimiento.setInt(5, registro.getCodigoCliente());
+            procedimiento.setInt(6, registro.getEmpleadoId());
 
             procedimiento.execute();
             listaFacturas.add(registro);
@@ -325,34 +327,66 @@ public class MenuFacturasController implements Initializable {
                 }
         }
     }
-    
-    public void actualizar(){
-        try{
-             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_editarEmpleado(?, ?, ?, ?, ?, ?) }");
-             Facturas registro = (Facturas) tblFacturas.getSelectionModel().getSelectedItem();
-              registro.setFacturaId(Integer.parseInt(txtFacturaID.getText()));
-        registro.setCodigoCliente(((Clientes) cmbCliente.getSelectionModel().getSelectedItem()).getCodigoCliente());
-        registro.setEmpleadoId(((Empleados) cmbEmpleado.getSelectionModel().getSelectedItem()).getEmpleadoId());
-        registro.setTotal(Double.parseDouble(txtTotalF.getText()));
-        LocalDate fechaSeleccionada = dtpFechaF.getValue();
-        java.sql.Date fecha = java.sql.Date.valueOf(fechaSeleccionada);
 
-        LocalTime horaSeleccionada = dtmHoraF.getValue();
-        Time hora = java.sql.Time.valueOf(horaSeleccionada);
-        registro.setHora(hora);
+    public void editar() {
+        switch (tipoDeOperaciones) {
+            case NINGUNO:
+
+                if (tblFacturas.getSelectionModel().getSelectedItem() != null) {
+                    btnEditar.setText("Actualizar");
+                    btnReporte.setText("Cancelar");
+                    btnAgregar.setDisable(true);
+                    btnEliminar.setDisable(true);
+                    imgEditar.setImage(new Image("/org/harolrodriguez/images/EditarF.png"));
+                    imgReporte.setImage(new Image("/org/harolrodriguez/images/Reportes.png"));
+                    activarControles();
+                    txtFacturaID.setEditable(false);
+                    tipoDeOperaciones = operaciones.ACTUALIZAR;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Debe seleccionar un Elemento");
+                }
+                break;
+            case ACTUALIZAR:
+
+                actualizar();
+                btnEditar.setText("Editar");
+                btnReporte.setText("Reportes");
+                btnAgregar.setDisable(false);
+                btnEliminar.setDisable(false);
+                imgEditar.setImage(new Image("/org/harolrodriguez/images/AgregarF.png"));
+                imgReporte.setImage(new Image("/org/harolrodriguez/images/Reportes.png"));
+                desactivarControles();
+                tipoDeOperaciones = operaciones.NINGUNO;
+                cargarDatos();
+        }
+    }
+
+    public void actualizar() {
+        try {
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_editarFactura(?, ?, ?, ?, ?, ?) }");
+            Facturas registro = (Facturas) tblFacturas.getSelectionModel().getSelectedItem();
+            registro.setFacturaId(Integer.parseInt(txtFacturaID.getText()));
+            LocalDate fechaSeleccionada = dtpFechaF.getValue();
+            java.sql.Date fecha = java.sql.Date.valueOf(fechaSeleccionada);
+             LocalTime horaSeleccionada = dtmHoraF.getValue();
+            Time hora = java.sql.Time.valueOf(horaSeleccionada);
+            registro.setHora(hora);
+            registro.setTotal(Double.parseDouble(txtTotalF.getText()));
+            registro.setCodigoCliente(((Clientes) cmbCliente.getSelectionModel().getSelectedItem()).getCodigoCliente());
+            registro.setEmpleadoId(((Empleados) cmbEmpleado.getSelectionModel().getSelectedItem()).getEmpleadoId());
             procedimiento.setInt(1, registro.getFacturaId());
-            procedimiento.setInt(2, registro.getCodigoCliente());
-            procedimiento.setInt(3, registro.getEmpleadoId());
-            procedimiento.setDate(4, fecha);
-            procedimiento.setTime(5, registro.getHora());
-            procedimiento.setDouble(6, registro.getTotal());
+            procedimiento.setDate(2, Date.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(fecha)));
+            procedimiento.setTime(3, registro.getHora());
+            procedimiento.setDouble(4, registro.getTotal());
+            procedimiento.setInt(5, registro.getCodigoCliente());
+            procedimiento.setInt(6, registro.getEmpleadoId());
 
             procedimiento.execute();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
     public void reporte() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:
@@ -384,8 +418,8 @@ public class MenuFacturasController implements Initializable {
         txtApellidoC.setEditable(true);
         dtpFechaF.setEditable(true);
         dtmHoraF.setEditable(true);
-        cmbCliente.setEditable(true);
-        cmbEmpleado.setEditable(false);
+        cmbCliente.setDisable(false);
+        cmbEmpleado.setDisable(false);
     }
 
     public void limpiarControles() {

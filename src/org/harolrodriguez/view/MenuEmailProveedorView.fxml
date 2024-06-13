@@ -95,7 +95,7 @@
             </ImageView>
          </children>
       </GridPane>
-      <TableView fx:id="tblEmail" layoutX="253.0" layoutY="237.0" prefHeight="295.0" prefWidth="600.0">
+      <TableView fx:id="tblEmail" layoutX="253.0" layoutY="237.0" onMouseClicked="#seleccionarElemento" prefHeight="295.0" prefWidth="600.0">
         <columns>
           <TableColumn fx:id="colCodEmail" prefWidth="138.0" text="codigoEmailProveedor" />
             <TableColumn fx:id="colEmail" prefWidth="160.0" text="emailProveedor" />

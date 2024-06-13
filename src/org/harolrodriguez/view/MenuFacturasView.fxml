@@ -81,7 +81,7 @@
                   <Image url="@../images/AgregarF.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#actualizar" prefHeight="43.0" prefWidth="175.0" text="Editar Factura" GridPane.rowIndex="1">
+            <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#editar" prefHeight="43.0" prefWidth="175.0" text="Editar Factura" GridPane.rowIndex="1">
                <stylesheets>
                   <URL value="@../resources/KinalMarketCSS.css" />
                   <URL value="@../resources/KinalMarketCSS.css" />

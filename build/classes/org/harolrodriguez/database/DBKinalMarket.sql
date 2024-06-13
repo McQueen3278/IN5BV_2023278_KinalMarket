@@ -153,7 +153,7 @@ create table detalleCompra (
 -- ---------------------------------------- Agregar Clientes ---------------------------------------------------------------------------------
 Delimiter $$
 	create procedure sp_agregarCliente (in CodigoCliente int, NITcliente varchar(10), in nombreCliente varchar(50), in apellidoCliente varchar(50),
-    in direccionCliente varchar(250), in telefonoCliente varchar(10), in correoCliente varchar(250))
+    in direccionCliente varchar(250), in telefonoCliente varchar(15), in correoCliente varchar(250))
 		Begin 
 			Insert into Clientes (CodigoCliente, NITCliente, nombreCliente, apellidoCliente, direccionCliente,
             telefonoCliente, correoCliente) values

@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Set;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -91,6 +92,12 @@ public class MenuEmailProveedorController implements Initializable {
         colCodP.setCellValueFactory(new PropertyValueFactory<EmailProveedor, Integer>("codigoProveedor"));
     }
 
+    public void seleccionarElemento(){
+        txtCodEP.setText(String.valueOf(((EmailProveedor)tblEmail.getSelectionModel().getSelectedItem()).getCodigoEmailProveedor()));
+        txtEmail.setText(((EmailProveedor)tblEmail.getSelectionModel().getSelectedItem()).getEmailProveedor());
+        txtDescripcion.setText(((EmailProveedor)tblEmail.getSelectionModel().getSelectedItem()).getDescripcion());
+    }
+    
     public Proveedores buscarProveedor(int codigoProveedor) {
         Proveedores resultado = null;
         try {
@@ -191,15 +198,15 @@ public class MenuEmailProveedorController implements Initializable {
     public void guardar() {
         EmailProveedor registro = new EmailProveedor();
         registro.setCodigoEmailProveedor(Integer.parseInt(txtCodEP.getText()));
-        registro.setCodigoProveedor(((Proveedores) cmbProveedor.getSelectionModel().getSelectedItem()).getCodigoProveedor());
         registro.setEmailProveedor(txtEmail.getText());
         registro.setDescripcion(txtDescripcion.getText());
+         registro.setCodigoProveedor(((Proveedores) cmbProveedor.getSelectionModel().getSelectedItem()).getCodigoProveedor());
         try {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_agregarEmailProveedor(?, ?, ?, ?)}");
             procedimiento.setInt(1, registro.getCodigoEmailProveedor());
             procedimiento.setString(2, registro.getEmailProveedor());
             procedimiento.setString(3, registro.getDescripcion());
-            procedimiento.setInt(5, registro.getCodigoProveedor());
+            procedimiento.setInt(4, registro.getCodigoProveedor());
             procedimiento.execute();
             listaEmail.add(registro);
         } catch (Exception e) {
@@ -283,7 +290,7 @@ public class MenuEmailProveedorController implements Initializable {
             procedimiento.setInt(1, registro.getCodigoEmailProveedor());
             procedimiento.setString(2, registro.getEmailProveedor());
             procedimiento.setString(3, registro.getDescripcion());
-            procedimiento.setInt(5, registro.getCodigoProveedor());
+            procedimiento.setInt(4, registro.getCodigoProveedor());
             procedimiento.execute();
         } catch (Exception e) {
             e.printStackTrace();
@@ -309,14 +316,12 @@ public class MenuEmailProveedorController implements Initializable {
         txtCodEP.setEditable(false);
         txtEmail.setEditable(false);
         txtDescripcion.setEditable(false);
-        cmbProveedor.setEditable(false);
     }
 
     public void activarControles() {
         txtCodEP.setEditable(true);
         txtEmail.setEditable(true);
         txtDescripcion.setEditable(true);
-        cmbProveedor.setEditable(true);
 
     }
 

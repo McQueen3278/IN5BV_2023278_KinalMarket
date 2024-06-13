@@ -20,7 +20,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javax.swing.JOptionPane;
 import org.harolrodriguez.bean.Compras;
 import org.harolrodriguez.bean.DetalleCompra;
@@ -223,23 +222,24 @@ public class MenuDetalleCompraController implements Initializable {
     }
 
     public void guardar() {
-        DetalleCompra registro = new DetalleCompra();
-        registro.setDetalleCompraId(Integer.parseInt(txtDetalleCompraID.getText()));
-        registro.setCantidadCompra(Integer.parseInt(txtCantidad.getText()));
-        registro.setProductoId(((Productos) cmbProducto.getSelectionModel().getSelectedItem()).getProductoId());
-        registro.setCompraId(((Compras) cmbCompra.getSelectionModel().getSelectedItem()).getCompraId());
-        try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_agregarDetalleCompra(?, ?, ?, ?)}");
-            procedimiento.setInt(1, registro.getDetalleCompraId());
+    DetalleCompra registro = new DetalleCompra();
+    registro.setDetalleCompraId(Integer.parseInt(txtDetalleCompraID.getText()));
+            registro.setCantidadCompra(Integer.parseInt(txtCantidad.getText()));
+            registro.setProductoId(((Productos) cmbProducto.getSelectionModel().getSelectedItem()).getProductoId());
+            registro.setCompraId(((Compras) cmbCompra.getSelectionModel().getSelectedItem()).getCompraId());
+    try {
+        PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_agregarDetalleCompra(?, ?, ?, ?)}");
+         procedimiento.setInt(1, registro.getDetalleCompraId());
             procedimiento.setInt(2, registro.getCantidadCompra());
             procedimiento.setInt(3, registro.getProductoId());
             procedimiento.setInt(4, registro.getCompraId());
             procedimiento.execute();
-            listaDCompra.add(registro);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        listaDCompra.add(registro);
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+}
+
 
     public void eliminar() {
         switch (tipoDeOperaciones) {
