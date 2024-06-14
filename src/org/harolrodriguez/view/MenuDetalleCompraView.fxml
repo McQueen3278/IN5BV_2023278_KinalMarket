@@ -15,8 +15,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="org.harolrodriguez.controller.MenuDetalleCompraController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.harolrodriguez.controller.MenuDetalleCompraController">
    <children>
       <ImageView fitHeight="513.0" fitWidth="899.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -44,7 +43,7 @@
                   <String fx:value="button6" />
                </styleClass>
             </Button>
-            <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#actualizar" prefHeight="50.0" prefWidth="167.0" text="Editar" GridPane.rowIndex="1">
+            <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#editar" prefHeight="50.0" prefWidth="167.0" text="Editar" GridPane.rowIndex="1">
                <stylesheets>
                   <URL value="@../resources/KinalMarketCSS.css" />
                   <URL value="@../resources/KinalMarketCSS.css" />

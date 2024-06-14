@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteClientes" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b801df7d-64ab-4d08-9ecb-d0985935790e">
-	<property name="ireport.zoom" value="1.4641000000000028"/>
+	<property name="ireport.zoom" value="1.210000000000005"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="190"/>
 	<queryString>
 		<![CDATA[call sp_ListarClientes]]>
 	</queryString>
@@ -30,8 +30,8 @@
 	<background>
 		<band height="802" splitType="Stretch">
 			<image scaleImage="FillFrame">
-				<reportElement x="-18" y="-19" width="592" height="821" uuid="def63a31-e46d-4c22-9d7f-2dafe8a3d328"/>
-				<imageExpression><![CDATA["C:\\Users\\Informatica\\Desktop\\Kinal_Market\\IN5BV_2023278_KinalMarket\\src\\org\\harolrodriguez\\images\\Membrete.png"]]></imageExpression>
+				<reportElement x="-18" y="-17" width="590" height="819" uuid="01f0af18-5d30-4e07-8907-d1b0b094aff7"/>
+				<imageExpression><![CDATA["C:\\Users\\harol\\OneDrive\\Escritorio\\Repositorio_Casa\\IN5BV_2023278_KinalMarket\\src\\org\\harolrodriguez\\images\\MembreteClientes.png"]]></imageExpression>
 			</image>
 		</band>
 	</background>
@@ -39,36 +39,51 @@
 		<band height="26" splitType="Stretch"/>
 	</title>
 	<pageHeader>
-		<band height="57" splitType="Stretch"/>
+		<band height="116" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="88" splitType="Stretch">
+		<band height="100" splitType="Stretch">
 			<staticText>
-				<reportElement x="26" y="40" width="100" height="20" uuid="5cdb3987-0436-4ff9-a595-bf0e5bebfc8a"/>
+				<reportElement x="26" y="58" width="100" height="20" uuid="5cdb3987-0436-4ff9-a595-bf0e5bebfc8a"/>
 				<text><![CDATA[nombreCliente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="156" y="40" width="100" height="20" uuid="71af0684-9acd-4563-b78b-6a1a99f5c893"/>
+				<reportElement x="156" y="58" width="100" height="20" uuid="71af0684-9acd-4563-b78b-6a1a99f5c893"/>
 				<text><![CDATA[apellidoCliente]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="72" width="555" height="1" uuid="64213d87-e689-4a2d-87a4-9ee8cd3825a6"/>
-			</line>
-			<line>
-				<reportElement x="0" y="23" width="555" height="1" uuid="cc736f9b-8949-4e53-8815-01d335a23d9b"/>
+				<reportElement x="0" y="45" width="555" height="1" uuid="cc736f9b-8949-4e53-8815-01d335a23d9b"/>
 			</line>
 			<staticText>
-				<reportElement x="277" y="40" width="100" height="20" uuid="897ceef4-0345-4140-bb02-a0e1cfe2c3c5"/>
+				<reportElement x="277" y="58" width="100" height="20" uuid="897ceef4-0345-4140-bb02-a0e1cfe2c3c5"/>
 				<text><![CDATA[NITCliente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="394" y="40" width="100" height="20" uuid="d75f55f4-3a48-4154-b804-836958d34529"/>
+				<reportElement x="409" y="58" width="100" height="20" uuid="d75f55f4-3a48-4154-b804-836958d34529"/>
 				<text><![CDATA[correoCliente]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="88" width="555" height="1" uuid="64213d87-e689-4a2d-87a4-9ee8cd3825a6"/>
+			</line>
+			<line>
+				<reportElement x="141" y="46" width="1" height="54" uuid="d3a75bbc-6cb7-4ef1-983e-91ba9b3d8074"/>
+			</line>
+			<line>
+				<reportElement x="267" y="46" width="1" height="54" uuid="10b02143-3c13-49f6-b129-0b76d25d4257"/>
+			</line>
+			<line>
+				<reportElement x="394" y="46" width="1" height="54" uuid="09995162-393e-42f9-907a-27cd907c9f27"/>
+			</line>
+			<line>
+				<reportElement x="555" y="45" width="1" height="55" uuid="d7070608-a243-4387-8e84-712c806af2ac"/>
+			</line>
+			<line>
+				<reportElement x="0" y="46" width="1" height="54" uuid="728aca85-ede4-4e03-8437-414e58e5fd33"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="57" splitType="Stretch">
+		<band height="34" splitType="Stretch">
 			<textField>
 				<reportElement x="26" y="13" width="100" height="20" uuid="cfd9115f-9a3c-4c0d-ae69-f797ddf89f31"/>
 				<textFieldExpression><![CDATA[$F{nombreCliente}]]></textFieldExpression>
@@ -78,16 +93,31 @@
 				<textFieldExpression><![CDATA[$F{apellidoCliente}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="46" width="555" height="1" uuid="25feb505-4c6c-431c-b503-1204f01c3faa"/>
+				<reportElement x="0" y="33" width="555" height="1" uuid="25feb505-4c6c-431c-b503-1204f01c3faa"/>
 			</line>
 			<textField>
 				<reportElement x="277" y="13" width="100" height="20" uuid="65900e5d-9124-4acd-9f57-c0844604854a"/>
 				<textFieldExpression><![CDATA[$F{NITCliente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="377" y="13" width="161" height="20" uuid="2961a7b0-caae-40b7-9bc7-730fa262710e"/>
+				<reportElement x="395" y="13" width="160" height="20" uuid="2961a7b0-caae-40b7-9bc7-730fa262710e"/>
 				<textFieldExpression><![CDATA[$F{correoCliente}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="141" y="0" width="1" height="34" uuid="18f586ed-4ad0-48b1-902e-4ae84312ca75"/>
+			</line>
+			<line>
+				<reportElement x="267" y="0" width="1" height="33" uuid="1ebff04b-b81d-42a2-a1c3-04d3574e76ad"/>
+			</line>
+			<line>
+				<reportElement x="394" y="0" width="1" height="33" uuid="468267d1-e6f9-42c4-87e8-8880d407235d"/>
+			</line>
+			<line>
+				<reportElement x="555" y="0" width="1" height="34" uuid="8c84739e-2c42-4898-a55f-9dae0f6a7f61"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="33" uuid="17e5e5c6-2770-4efc-92b6-e783868871b7"/>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>

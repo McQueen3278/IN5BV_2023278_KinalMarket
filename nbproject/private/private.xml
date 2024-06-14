@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
+        <file>
+            <url>src/org/harolrodriguez/controller/MenuDetalleCompraController.java</url>
+            <bookmark id="2">
+                <name/>
+                <line>192</line>
+                <key/>
+            </bookmark>
+        </file>
         <file>
             <url>src/org/harolrodriguez/controller/MenuTipoProductoController.java</url>
             <bookmark id="1">
@@ -30,6 +38,7 @@
             <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/bean/Productos.java</file>
             <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/database/DBKinalMarket.sql</file>
             <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/system/Main.java</file>
+            <file>file:/C:/Users/harol/OneDrive/Escritorio/Repositorio_Casa/IN5BV_2023278_KinalMarket/src/org/harolrodriguez/controller/MenuCargosController.java</file>
         </group>
     </open-files>
 </project-private>

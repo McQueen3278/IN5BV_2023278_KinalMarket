@@ -13,6 +13,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,6 +35,7 @@ import org.harolrodriguez.bean.Clientes;
 import org.harolrodriguez.bean.Empleados;
 import org.harolrodriguez.bean.Facturas;
 import org.harolrodriguez.db.Conexion;
+import org.harolrodriguez.report.GenerarReporte;
 import org.harolrodriguez.system.Main;
 
 /**
@@ -390,6 +393,8 @@ public class MenuFacturasController implements Initializable {
     public void reporte() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:
+                case NINGUNO:
+                imprimirReporte();
                 desactivarControles();
                 limpiarControles();
                 btnEditar.setText("Editar");
@@ -402,6 +407,14 @@ public class MenuFacturasController implements Initializable {
         }
     }
 
+    public void imprimirReporte(){
+         Map parametros = new HashMap();
+         int factID = ((Facturas)tblFacturas.getSelectionModel().getSelectedItem()).getFacturaId();
+         parametros.put("factID", factID);
+         GenerarReporte.mostrarReportes("ReporteClientes.jasper", "Reporte de Clientes", parametros);
+        
+    }
+    
     public void desactivarControles() {
         txtFacturaID.setEditable(false);
         txtTotalF.setEditable(false);
