@@ -13,7 +13,10 @@ create table Clientes(
 	telefonoCliente varchar(15),
 	correoCliente varchar(250),
 	primary key PK_Clientes(codigoCliente)
+
 );
+
+
 
 -- Se crea la entidad Proveedores
 create table Proveedores(
@@ -64,6 +67,7 @@ Create table Empleados (
     primary key PK_empleadoId (empleadoId) ,
     constraint FK_Cargos_Empleados foreign key (cargoId)
 		references Cargos(cargoId)
+        ON DELETE CASCADE
 );
 
 -- Se crea la entidad Facturas
@@ -79,6 +83,7 @@ Create table Facturas(
 		references Clientes(codigoCliente),
 	constraint FK_Empleados_Facturas foreign key (empleadoId)
 		references Empleados(empleadoId)
+        ON DELETE CASCADE
 );
 
 -- Se crea la entidad telefonoProveedores
@@ -91,6 +96,7 @@ create table telefonoProveedor(
     primary key PK_codigoTelefonoProveedor (codigoTelefonoProveedor),
     constraint FK_Proveedores_telefonoProveedor foreign key (codigoProveedor)
 		references Proveedores (codigoProveedor)
+        ON DELETE CASCADE
         
 );
 
@@ -103,6 +109,7 @@ Create table EmailProveedor(
     primary key PK_codigoEmailProveedor (codigoEmailProveedor),
     constraint FK_Proveedores_EmailProveedor foreign key (codigoProveedor)
 		references Proveedores (codigoProveedor)
+        ON DELETE CASCADE
 );
 
 -- Se crea la entidad Productos
@@ -121,6 +128,7 @@ Create table Productos (
 		references Proveedores(codigoProveedor),
 	constraint FK_categoriaProductos_Productos foreign key (categoriaProductoId)
 		references categoriaProductos(categoriaProductoId)
+        ON DELETE CASCADE
 );
 
 -- Se crea la entidad detalleFactura
@@ -133,6 +141,7 @@ create table detalleFactura(
 		references Facturas(facturaId),
 	constraint FK_Productos_detalleFactura foreign key (productoId)
 		references Productos(productoId)
+        ON DELETE CASCADE
 );
 
 
@@ -147,6 +156,7 @@ create table detalleCompra (
 		references Compras(compraId),
 	constraint FK_Productos_detalleCompra foreign key (productoId)
 		references Productos(productoId)
+        ON DELETE CASCADE
 );
 -- -------------------- PROCEDIMIENTOS ALMACENADOS ---------------------
 -- -------------------- Clientes --------------------------------------
@@ -163,6 +173,33 @@ Delimiter $$
 Delimiter ;
 call sp_AgregarCliente(01, '14587452', 'Harol', 'Rodriguez', 'Zona 7', '41812768','hrodriguez-2023278@kinal.edu.gt');
 call sp_AgregarCliente(02, '14587452', 'Oliver', 'Donis', 'Zona 3', '41832768','hrodriguez-2023378@kinal.edu.gt');
+
+INSERT INTO Clientes (CodigoCliente, NITcliente, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, correoCliente) 
+VALUES (2, '0987654321', 'Maria', 'Gomez', 'Calle Falsa 456, Ciudad', '5559876543', 'maria.gomez@example.com');
+
+INSERT INTO Clientes (CodigoCliente, NITcliente, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, correoCliente) 
+VALUES (3, '1230984567', 'Carlos', 'Lopez', 'Av. Libertad 789, Ciudad', '5551230987', 'carlos.lopez@example.com');
+
+INSERT INTO Clientes (CodigoCliente, NITcliente, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, correoCliente) 
+VALUES (4, '0981237654', 'Ana', 'Martinez', 'Calle Principal 321, Ciudad', '5559871234', 'ana.martinez@example.com');
+
+INSERT INTO Clientes (CodigoCliente, NITcliente, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, correoCliente) 
+VALUES (5, '5678901234', 'Luis', 'Garcia', 'Av. Secundaria 654, Ciudad', '5556789012', 'luis.garcia@example.com');
+
+INSERT INTO Clientes (CodigoCliente, NITcliente, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, correoCliente) 
+VALUES (6, '6543210987', 'Elena', 'Rodriguez', 'Calle Tercera 987, Ciudad', '5557890123', 'elena.rodriguez@example.com');
+
+INSERT INTO Clientes (CodigoCliente, NITcliente, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, correoCliente) 
+VALUES (7, '2345678901', 'Miguel', 'Hernandez', 'Av. Cuarta 111, Ciudad', '5552345678', 'miguel.hernandez@example.com');
+
+INSERT INTO Clientes (CodigoCliente, NITcliente, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, correoCliente) 
+VALUES (8, '3456789012', 'Sofia', 'Torres', 'Calle Quinta 222, Ciudad', '5553456789', 'sofia.torres@example.com');
+
+INSERT INTO Clientes (CodigoCliente, NITcliente, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, correoCliente) 
+VALUES (9, '4567890123', 'Jorge', 'Diaz', 'Av. Sexta 333, Ciudad', '5554567890', 'jorge.diaz@example.com');
+
+INSERT INTO Clientes (CodigoCliente, NITcliente, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, correoCliente) 
+VALUES (10, '5678901235', 'Laura', 'Vasquez', 'Calle Séptima 444, Ciudad', '5555678901', 'laura.vasquez@example.com');
 -- -----------------------------------------Listsar Clientes -----------------------------------
 Delimiter $$
 	create procedure sp_ListarClientes()
@@ -234,11 +271,38 @@ Delimiter $$
 Delimiter ;
 call sp_AgregarProveedores(01,'1826400k','Rolando','Espinoza','Zona 7','Vender','41812768','RolandoEspinoza.com');
 call sp_AgregarProveedores(02,'1826400k','Ronaldo','Sutuj','Zona 7','Vender','41812328','RonaldoSutuj.com');
+
+INSERT INTO Proveedores (codigoProveedor, NITproveedor, nombreProveedor, apellidoProveedor, direccionProveedor, razonSocial, contactoPrincipal, paginaWeb) 
+VALUES (1, '1234567890', 'Carlos', 'Santos', 'Av. Las Flores 123, Ciudad', 'Santos Importaciones', 'carlos.santos@example.com', 'www.santosimport.com');
+INSERT INTO Proveedores (codigoProveedor, NITproveedor, nombreProveedor, apellidoProveedor, direccionProveedor, razonSocial, contactoPrincipal, paginaWeb) 
+VALUES (3, '5678901234', 'Miguel', 'Hernandez', 'Av. Libertad 789, Ciudad', 'Hernandez y Cia', 'miguel.hernandez@example.com', 'www.hernandezycia.com');
+
+INSERT INTO Proveedores (codigoProveedor, NITproveedor, nombreProveedor, apellidoProveedor, direccionProveedor, razonSocial, contactoPrincipal, paginaWeb) 
+VALUES (4, '3456789012', 'Ana', 'Rodriguez', 'Calle Secundaria 321, Ciudad', 'Rodriguez Proveedores', 'ana.rodriguez@example.com', 'www.rodriguezproveedores.com');
+
+INSERT INTO Proveedores (codigoProveedor, NITproveedor, nombreProveedor, apellidoProveedor, direccionProveedor, razonSocial, contactoPrincipal, paginaWeb) 
+VALUES (5, '2345678901', 'Luis', 'Gomez', 'Av. Tercera 654, Ciudad', 'Gomez y Asociados', 'luis.gomez@example.com', 'www.gomezyasociados.com');
+
+INSERT INTO Proveedores (codigoProveedor, NITproveedor, nombreProveedor, apellidoProveedor, direccionProveedor, razonSocial, contactoPrincipal, paginaWeb) 
+VALUES (6, '6789012345', 'Sofia', 'Martinez', 'Calle Cuarta 987, Ciudad', 'Martinez Suministros', 'sofia.martinez@example.com', 'www.martinezsuministros.com');
+
+INSERT INTO Proveedores (codigoProveedor, NITproveedor, nombreProveedor, apellidoProveedor, direccionProveedor, razonSocial, contactoPrincipal, paginaWeb) 
+VALUES (7, '7890123456', 'Jorge', 'Lopez', 'Av. Quinta 111, Ciudad', 'Lopez Trading', 'jorge.lopez@example.com', 'www.lopeztrading.com');
+
+INSERT INTO Proveedores (codigoProveedor, NITproveedor, nombreProveedor, apellidoProveedor, direccionProveedor, razonSocial, contactoPrincipal, paginaWeb) 
+VALUES (8, '8901234567', 'Elena', 'Vasquez', 'Calle Sexta 222, Ciudad', 'Vasquez y Compañia', 'elena.vasquez@example.com', 'www.vasquezycompania.com');
+
+INSERT INTO Proveedores (codigoProveedor, NITproveedor, nombreProveedor, apellidoProveedor, direccionProveedor, razonSocial, contactoPrincipal, paginaWeb) 
+VALUES (9, '9012345678', 'Mario', 'Garcia', 'Av. Séptima 333, Ciudad', 'Garcia Proveedores', 'mario.garcia@example.com', 'www.garciaproveedores.com');
+
+INSERT INTO Proveedores (codigoProveedor, NITproveedor, nombreProveedor, apellidoProveedor, direccionProveedor, razonSocial, contactoPrincipal, paginaWeb) 
+VALUES (10, '0123456789', 'Lucia', 'Torres', 'Calle Octava 444, Ciudad', 'Torres Exportaciones', 'lucia.torres@example.com', 'www.torresexport.com');
 -- ----------------------------------- Listar Proveedores -------------------------------------------------------------------
 Delimiter $$
 	Create procedure sp_ListarProveedores()
 		Begin
 			Select
+				
             P.codigoProveedor,
             P.NITproveedor,
             P.nombreProveedor,
@@ -296,6 +360,7 @@ Delimiter $$
 	end$$
 Delimiter ;
 call sp_EliminarProveedor(01);
+
 -- ------------------------------------------ Agrear Compra------------------------------------------------------------------------
 Delimiter $$
 	Create procedure sp_AgregarCompra(in compraId int, in fechaCompra date, in totalCompra decimal (10,2))
@@ -306,6 +371,32 @@ Delimiter $$
 Delimiter ;
 call sp_AgregarCompra(01,'2021-04-22','10000.00');
 call sp_AgregarCompra(02,'2022-05-13','5000.00');
+
+INSERT INTO Compras (compraId, fechaCompra, totalCompra) 
+VALUES (1, '2024-01-15', 1500.50);
+INSERT INTO Compras (compraId, fechaCompra, totalCompra) 
+VALUES (3, '2024-03-10', 3200.00);
+
+INSERT INTO Compras (compraId, fechaCompra, totalCompra) 
+VALUES (4, '2024-04-05', 1800.25);
+
+INSERT INTO Compras (compraId, fechaCompra, totalCompra) 
+VALUES (5, '2024-05-12', 2100.50);
+
+INSERT INTO Compras (compraId, fechaCompra, totalCompra) 
+VALUES (6, '2024-06-18', 2750.00);
+
+INSERT INTO Compras (compraId, fechaCompra, totalCompra) 
+VALUES (7, '2024-07-22', 4000.75);
+
+INSERT INTO Compras (compraId, fechaCompra, totalCompra) 
+VALUES (8, '2024-08-15', 3350.50);
+
+INSERT INTO Compras (compraId, fechaCompra, totalCompra) 
+VALUES (9, '2024-09-10', 2900.00);
+
+INSERT INTO Compras (compraId, fechaCompra, totalCompra) 
+VALUES (10, '2024-10-05', 4500.25);
 -- ----------------------------------------- Listar Compras ------------------------------------------------------------------------------
 Delimiter $$
 	Create procedure sp_ListarCompras()
@@ -362,6 +453,33 @@ Delimiter $$
 Delimiter ;
 call sp_agregarCategoriaProductos(01,'Vegetales','Esta categoria esta compuesta por todo tipo de vegetal');
 call sp_agregarCategoriaProductos(02,'Carnes','Esta categoria esta compuesta por las diferentes clases de carnes');
+
+INSERT INTO categoriaProductos (categoriaProductoId, nombreCategoria, descripcionCategoria) 
+VALUES (1, 'Electrónica', 'Dispositivos electrónicos y gadgets.');
+
+INSERT INTO categoriaProductos (categoriaProductoId, nombreCategoria, descripcionCategoria) 
+VALUES (3, 'Alimentos', 'Productos comestibles y bebidas.');
+
+INSERT INTO categoriaProductos (categoriaProductoId, nombreCategoria, descripcionCategoria) 
+VALUES (4, 'Hogar', 'Artículos para el hogar y decoración.');
+
+INSERT INTO categoriaProductos (categoriaProductoId, nombreCategoria, descripcionCategoria) 
+VALUES (5, 'Deportes', 'Equipo y ropa deportiva.');
+
+INSERT INTO categoriaProductos (categoriaProductoId, nombreCategoria, descripcionCategoria) 
+VALUES (6, 'Juguetes', 'Juguetes y juegos para niños.');
+
+INSERT INTO categoriaProductos (categoriaProductoId, nombreCategoria, descripcionCategoria) 
+VALUES (7, 'Libros', 'Libros y material de lectura.');
+
+INSERT INTO categoriaProductos (categoriaProductoId, nombreCategoria, descripcionCategoria) 
+VALUES (8, 'Salud', 'Productos de salud y cuidado personal.');
+
+INSERT INTO categoriaProductos (categoriaProductoId, nombreCategoria, descripcionCategoria) 
+VALUES (9, 'Automotriz', 'Accesorios y repuestos para vehículos.');
+
+INSERT INTO categoriaProductos (categoriaProductoId, nombreCategoria, descripcionCategoria) 
+VALUES (10, 'Tecnología', 'Productos y servicios tecnológicos.');
 -- ---------------------------------------------- Listar categorias--------------------------------------------------------------------------
 Delimiter $$ 
 	Create procedure sp_ListarCategorias()
@@ -418,6 +536,32 @@ Delimiter $$
 Delimiter ;
 call sp_agregarCargo(01,'Encargado de Ventas','La persona en este puesto es la encargada de gestionar el area de ventas');
 call sp_agregarCargo(02,'Jefe Informatica','La persona en este puesto es la encargada de dirigir todo el departamento de informatica');
+
+INSERT INTO Cargos (cargoId, nombreCargo, descripcionCargo) 
+VALUES (1, 'Gerente General', 'Responsable de la dirección y administración general.');
+INSERT INTO Cargos (cargoId, nombreCargo, descripcionCargo) 
+VALUES (3, 'Desarrollador', 'Desarrollo y mantenimiento de software.');
+
+INSERT INTO Cargos (cargoId, nombreCargo, descripcionCargo) 
+VALUES (4, 'Soporte Técnico', 'Atención y resolución de problemas técnicos.');
+
+INSERT INTO Cargos (cargoId, nombreCargo, descripcionCargo) 
+VALUES (5, 'Diseñador Gráfico', 'Creación de material gráfico y visual.');
+
+INSERT INTO Cargos (cargoId, nombreCargo, descripcionCargo) 
+VALUES (6, 'Vendedor', 'Responsable de ventas y atención al cliente.');
+
+INSERT INTO Cargos (cargoId, nombreCargo, descripcionCargo) 
+VALUES (7, 'Recursos Humanos', 'Gestión de personal y administración de recursos humanos.');
+
+INSERT INTO Cargos (cargoId, nombreCargo, descripcionCargo) 
+VALUES (8, 'Marketing', 'Desarrollo y ejecución de estrategias de marketing.');
+
+INSERT INTO Cargos (cargoId, nombreCargo, descripcionCargo) 
+VALUES (9, 'Analista de Datos', 'Análisis e interpretación de datos empresariales.');
+
+INSERT INTO Cargos (cargoId, nombreCargo, descripcionCargo) 
+VALUES (10, 'Logística', 'Coordinación y gestión de operaciones logísticas.');
 -- --------------------------------------------- Listar Cargos --------------------------------------------------------------------------------
 Delimiter $$
 	Create procedure sp_listarCargos()
@@ -475,6 +619,32 @@ Delimiter $$
 Delimiter ;
 call sp_agregarEmpleados(01, 'Juan', 'Perez', 2000.00, '08:00:00', '17:00:00', 02 );
 call sp_agregarEmpleados(02, 'María', 'González', 1800.00, '09:00:00', '18:00:00', 02);
+
+INSERT INTO Empleados (empleadoId, nombreEmpleado, apellidoEmpleado, sueldo, horaEntrada, horaSalida, cargoId) 
+VALUES (1, 'Juan', 'Perez', 3500.00, '08:00:00', '16:00:00', 1);
+INSERT INTO Empleados (empleadoId, nombreEmpleado, apellidoEmpleado, sueldo, horaEntrada, horaSalida, cargoId) 
+VALUES (3, 'Carlos', 'Lopez', 3200.75, '10:00:00', '18:00:00', 3);
+
+INSERT INTO Empleados (empleadoId, nombreEmpleado, apellidoEmpleado, sueldo, horaEntrada, horaSalida, cargoId) 
+VALUES (4, 'Ana', 'Martinez', 2500.00, '07:00:00', '15:00:00', 4);
+
+INSERT INTO Empleados (empleadoId, nombreEmpleado, apellidoEmpleado, sueldo, horaEntrada, horaSalida, cargoId) 
+VALUES (5, 'Luis', 'Garcia', 3000.25, '08:30:00', '16:30:00', 5);
+
+INSERT INTO Empleados (empleadoId, nombreEmpleado, apellidoEmpleado, sueldo, horaEntrada, horaSalida, cargoId) 
+VALUES (6, 'Elena', 'Rodriguez', 2700.50, '09:00:00', '17:00:00', 6);
+
+INSERT INTO Empleados (empleadoId, nombreEmpleado, apellidoEmpleado, sueldo, horaEntrada, horaSalida, cargoId) 
+VALUES (7, 'Miguel', 'Hernandez', 2600.75, '10:00:00', '18:00:00', 7);
+
+INSERT INTO Empleados (empleadoId, nombreEmpleado, apellidoEmpleado, sueldo, horaEntrada, horaSalida, cargoId) 
+VALUES (8, 'Sofia', 'Torres', 2400.00, '08:00:00', '16:00:00', 8);
+
+INSERT INTO Empleados (empleadoId, nombreEmpleado, apellidoEmpleado, sueldo, horaEntrada, horaSalida, cargoId) 
+VALUES (9, 'Jorge', 'Diaz', 3300.25, '09:30:00', '17:30:00', 9);
+
+INSERT INTO Empleados (empleadoId, nombreEmpleado, apellidoEmpleado, sueldo, horaEntrada, horaSalida, cargoId) 
+VALUES (10, 'Laura', 'Vasquez', 2900.50, '08:00:00', '16:00:00', 10);
 -- -------------------------------------------------- Listar empleados ----------------------------------------------------------------------
 Delimiter $$
 Create procedure sp_listarEmpleados()
@@ -544,6 +714,29 @@ Delimiter ;
 call sp_agregarFactura(01, '2024-04-23', '14:30:00', 150.50, 01, 02);
 call sp_agregarFactura(02, '2024-04-24', '10:00:00', 300.75, 01, 02);
 call sp_agregarFactura(03, '2024-04-25', '12:45:00', 250.00, 01, 02);
+
+INSERT INTO Facturas (facturaId, facha, hora, total, codigoCliente, empleadoId) 
+VALUES (1, '2024-01-10', '10:30:00', 150.75, 1, 1);
+INSERT INTO Facturas (facturaId, facha, hora, total, codigoCliente, empleadoId) 
+VALUES (4, '2024-01-25', '13:15:00', 400.00, 4, 4);
+
+INSERT INTO Facturas (facturaId, facha, hora, total, codigoCliente, empleadoId) 
+VALUES (5, '2024-01-30', '14:00:00', 500.75, 5, 5);
+
+INSERT INTO Facturas (facturaId, facha, hora, total, codigoCliente, empleadoId) 
+VALUES (6, '2024-02-05', '15:30:00', 250.50, 6, 6);
+
+INSERT INTO Facturas (facturaId, facha, hora, total, codigoCliente, empleadoId) 
+VALUES (7, '2024-02-10', '16:45:00', 300.25, 7, 7);
+
+INSERT INTO Facturas (facturaId, facha, hora, total, codigoCliente, empleadoId) 
+VALUES (8, '2024-02-15', '17:00:00', 450.00, 8, 8);
+
+INSERT INTO Facturas (facturaId, facha, hora, total, codigoCliente, empleadoId) 
+VALUES (9, '2024-02-20', '18:30:00', 350.75, 9, 9);
+
+INSERT INTO Facturas (facturaId, facha, hora, total, codigoCliente, empleadoId) 
+VALUES (10, '2024-02-25', '19:00:00', 400.50, 10, 10);
 -- ----------------------------------------------- Listar Factura ------------------------------------------------------------------------------------
 Delimiter $$
 	Create procedure sp_listarFacturas()
@@ -610,6 +803,29 @@ Delimiter ;
 call sp_agregarTelefonoProveedor(01, '12345678', '87654321', 'Número principal y secundario', 02);
 call sp_agregarTelefonoProveedor(02, '98765432', '41812768', 'Número principal', 02);
 call sp_agregarTelefonoProveedor(03, '87654321', '23456789', 'Número principal y secundario', 02);
+
+INSERT INTO telefonoProveedor (codigoTelefonoProveedor, numeroPrincipal, numeroSecundario, observaciones, codigoProveedor) 
+VALUES (1, '5551234', '5555678', 'Contacto principal', 1);
+INSERT INTO telefonoProveedor (codigoTelefonoProveedor, numeroPrincipal, numeroSecundario, observaciones, codigoProveedor) 
+VALUES (4, '5554567', '5558901', 'Número directo del proveedor', 4);
+
+INSERT INTO telefonoProveedor (codigoTelefonoProveedor, numeroPrincipal, numeroSecundario, observaciones, codigoProveedor) 
+VALUES (5, '5555678', '5559012', 'Disponible 24/7', 5);
+
+INSERT INTO telefonoProveedor (codigoTelefonoProveedor, numeroPrincipal, numeroSecundario, observaciones, codigoProveedor) 
+VALUES (6, '5556789', '5550123', 'Contacto secundario', 6);
+
+INSERT INTO telefonoProveedor (codigoTelefonoProveedor, numeroPrincipal, numeroSecundario, observaciones, codigoProveedor) 
+VALUES (7, '5557890', '5551234', 'Número principal', 7);
+
+INSERT INTO telefonoProveedor (codigoTelefonoProveedor, numeroPrincipal, numeroSecundario, observaciones, codigoProveedor) 
+VALUES (8, '5558901', '5552345', 'Usar fuera de horario de oficina', 8);
+
+INSERT INTO telefonoProveedor (codigoTelefonoProveedor, numeroPrincipal, numeroSecundario, observaciones, codigoProveedor) 
+VALUES (9, '5559012', '5553456', 'Preferido para emergencias', 9);
+
+INSERT INTO telefonoProveedor (codigoTelefonoProveedor, numeroPrincipal, numeroSecundario, observaciones, codigoProveedor) 
+VALUES (10, '5550123', '5554567', 'Número del gerente', 10);
 -- -------------------------------------------------- Listar Telefonos Proveedores ------------------------------*----------------------------------
 Delimiter $$
 Create procedure sp_listarTelefonoProveedor()
@@ -674,6 +890,29 @@ Delimiter ;
 call sp_agregarEmailProveedor(01, 'proveedor1@example.com', 'Correo principal', 02);
 call sp_agregarEmailProveedor(02, 'proveedor2@example.com', 'Correo principal', 02);
 call sp_agregarEmailProveedor(03, 'proveedor3@example.com', 'Correo principal', 02);
+
+INSERT INTO EmailProveedor (codigoEmailProveedor, emailProveedor, descripcion, codigoProveedor) 
+VALUES (1, 'info@santosimport.com', 'Email principal de contacto', 1);
+INSERT INTO EmailProveedor (codigoEmailProveedor, emailProveedor, descripcion, codigoProveedor) 
+VALUES (4, 'contacto@rodriguezproveedores.com', 'Contacto general', 4);
+
+INSERT INTO EmailProveedor (codigoEmailProveedor, emailProveedor, descripcion, codigoProveedor) 
+VALUES (5, 'info@gomezyasociados.com', 'Información general', 5);
+
+INSERT INTO EmailProveedor (codigoEmailProveedor, emailProveedor, descripcion, codigoProveedor) 
+VALUES (6, 'ventas@martinezsuministros.com', 'Ventas y comercial', 6);
+
+INSERT INTO EmailProveedor (codigoEmailProveedor, emailProveedor, descripcion, codigoProveedor) 
+VALUES (7, 'atencion@lopeztrading.com', 'Atención al cliente', 7);
+
+INSERT INTO EmailProveedor (codigoEmailProveedor, emailProveedor, descripcion, codigoProveedor) 
+VALUES (8, 'info@vasquezycompania.com', 'Información y contacto', 8);
+
+INSERT INTO EmailProveedor (codigoEmailProveedor, emailProveedor, descripcion, codigoProveedor) 
+VALUES (9, 'ventas@garciaproveedores.com', 'Ventas y distribución', 9);
+
+INSERT INTO EmailProveedor (codigoEmailProveedor, emailProveedor, descripcion, codigoProveedor) 
+VALUES (10, 'soporte@torresexport.com', 'Soporte y asistencia', 10);
 -- ----------------------------------------------- Listar Emaail Proveedores ---------------------------------------------------------------------------
 Delimiter $$
 Create procedure sp_listarEmailProveedor()
@@ -738,6 +977,29 @@ Delimiter ;
 call sp_agregarProducto(01, 'Laptop', 'Laptop de última generación', 10, 1200.00, 1100.00, 1000.00, 02, 02);
 call sp_agregarProducto(2, 'Teléfono móvil', 'Teléfono inteligente de gama media', 20, 500.00, 450.00, 400.00, 02, 02);
 call sp_agregarProducto(3, 'Tablet', 'Tablet con pantalla HD', 15, 300.00, 280.00, 250.00, 02, 02);
+
+INSERT INTO Productos (productoId, nombreProducto, descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor, precioCompra, codigoProveedor, categoriaProductoId) 
+VALUES (1, 'Laptop HP', 'Laptop HP de 15 pulgadas', 50, 700.00, 650.00, 600.00, 1, 1);
+INSERT INTO Productos (productoId, nombreProducto, descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor, precioCompra, codigoProveedor, categoriaProductoId) 
+VALUES (4, 'Café Colombiano', 'Café premium de Colombia', 100, 12.00, 10.00, 8.00, 4, 3);
+
+INSERT INTO Productos (productoId, nombreProducto, descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor, precioCompra, codigoProveedor, categoriaProductoId) 
+VALUES (5, 'Sofá de Cuero', 'Sofá de cuero de 3 plazas', 20, 800.00, 750.00, 700.00, 5, 4);
+
+INSERT INTO Productos (productoId, nombreProducto, descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor, precioCompra, codigoProveedor, categoriaProductoId) 
+VALUES (6, 'Balón de Fútbol', 'Balón de fútbol profesional', 150, 30.00, 25.00, 20.00, 6, 5);
+
+INSERT INTO Productos (productoId, nombreProducto, descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor, precioCompra, codigoProveedor, categoriaProductoId) 
+VALUES (7, 'Juguete Lego', 'Set de construcción Lego', 120, 50.00, 45.00, 40.00, 7, 6);
+
+INSERT INTO Productos (productoId, nombreProducto, descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor, precioCompra, codigoProveedor, categoriaProductoId) 
+VALUES (8, 'Novela Bestseller', 'Novela de autor reconocido', 300, 15.00, 12.00, 10.00, 8, 7);
+
+INSERT INTO Productos (productoId, nombreProducto, descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor, precioCompra, codigoProveedor, categoriaProductoId) 
+VALUES (9, 'Vitaminas Multivitamínicas', 'Suplemento de vitaminas y minerales', 500, 20.00, 18.00, 15.00, 9, 8);
+
+INSERT INTO Productos (productoId, nombreProducto, descripcionProducto, cantidadStock, precioVentaUnitario, precioVentaMayor, precioCompra, codigoProveedor, categoriaProductoId) 
+VALUES (10, 'Filtro de Aceite', 'Filtro de aceite para automóvil', 80, 35.00, 30.00, 25.00, 10, 9);
 -- -----------------------------------------------Listar Producto -----------------------------------------------------------------------------------
 Delimiter $$
 	Create procedure sp_listarProductos()
@@ -814,6 +1076,29 @@ Delimiter ;
 call sp_agregarDetalleFactura(01, 02, 03);
 call sp_agregarDetalleFactura(02, 03, 02);
 call sp_agregarDetalleFactura(03, 02, 03);
+
+INSERT INTO detalleFactura (detalleFacturaId, facturaId, productoId) 
+VALUES (1, 1, 1);
+INSERT INTO detalleFactura (detalleFacturaId, facturaId, productoId) 
+VALUES (4, 4, 4);
+
+INSERT INTO detalleFactura (detalleFacturaId, facturaId, productoId) 
+VALUES (5, 5, 5);
+
+INSERT INTO detalleFactura (detalleFacturaId, facturaId, productoId) 
+VALUES (6, 6, 6);
+
+INSERT INTO detalleFactura (detalleFacturaId, facturaId, productoId) 
+VALUES (7, 7, 7);
+
+INSERT INTO detalleFactura (detalleFacturaId, facturaId, productoId) 
+VALUES (8, 8, 8);
+
+INSERT INTO detalleFactura (detalleFacturaId, facturaId, productoId) 
+VALUES (9, 9, 9);
+
+INSERT INTO detalleFactura (detalleFacturaId, facturaId, productoId) 
+VALUES (10, 10, 10);
 -- ------------------------------------------------Listar detalleFactura----------------------------------------------------------------------
 Delimiter $$
 	Create procedure sp_listarDetalleFactura()
@@ -871,6 +1156,29 @@ Delimiter ;
 call sp_agregarDetalleCompra(01, 05, 02, 02);
 call sp_agregarDetalleCompra(02, 10, 02, 02);
 call sp_agregarDetalleCompra(03, 07, 03, 02);
+
+INSERT INTO detalleCompra (detalleCompraId, cantidadCompra, productoId, compraId) 
+VALUES (1, 10, 1, 1);
+INSERT INTO detalleCompra (detalleCompraId, cantidadCompra, productoId, compraId) 
+VALUES (4, 25, 4, 4);
+
+INSERT INTO detalleCompra (detalleCompraId, cantidadCompra, productoId, compraId) 
+VALUES (5, 30, 5, 5);
+
+INSERT INTO detalleCompra (detalleCompraId, cantidadCompra, productoId, compraId) 
+VALUES (6, 12, 6, 6);
+
+INSERT INTO detalleCompra (detalleCompraId, cantidadCompra, productoId, compraId) 
+VALUES (7, 18, 7, 7);
+
+INSERT INTO detalleCompra (detalleCompraId, cantidadCompra, productoId, compraId) 
+VALUES (8, 22, 8, 8);
+
+INSERT INTO detalleCompra (detalleCompraId, cantidadCompra, productoId, compraId) 
+VALUES (9, 14, 9, 9);
+
+INSERT INTO detalleCompra (detalleCompraId, cantidadCompra, productoId, compraId) 
+VALUES (10, 16, 10, 10);
 -- -------------------------------------------- Listar detalle Compra ----------------------------------------------------------------------
 Delimiter $$
 	Create procedure sp_listarDetalleCompra()
@@ -921,61 +1229,5 @@ Delimiter $$
 Delimiter ;
 call sp_eliminarDetalleCompra(01);
 
--- Trigger para actualizar precios en Productos basado en DetalleCompra
-DELIMITER $$
-CREATE TRIGGER trg_actualizar_prices AFTER INSERT ON DetalleCompra
-FOR EACH ROW
-BEGIN
-    DECLARE unit_price DECIMAL(10, 2);
-    DECLARE dozen_price DECIMAL(10, 2);
-    DECLARE bulk_price DECIMAL(10, 2);
-    
-    SELECT precioCompra INTO unit_price FROM Productos WHERE productoId = NEW.productoId;
-    
-    SET dozen_price = unit_price * 1.35;  -- 35% de ganancia
-    SET bulk_price = unit_price * 1.25;   -- 25% de ganancia
-    SET unit_price = unit_price * 1.40;   -- 40% de ganancia
-    
-    UPDATE Productos 
-    SET 
-        precioVentaUnitario = unit_price,
-        precioVentaMayor = dozen_price,
-        precioCompra = bulk_price
-    WHERE productoId = NEW.productoId;
-END$$
-DELIMITER ;
-
--- Trigger para actualizar la existencia en Productos basado en DetalleCompra
-DELIMITER $$
-CREATE TRIGGER trg_actualizar_stock AFTER INSERT ON DetalleCompra
-FOR EACH ROW
-BEGIN
-    UPDATE Productos 
-    SET cantidadStock = cantidadStock + NEW.cantidadCompra
-    WHERE productoId = NEW.productoId;
-END$$
-DELIMITER ;
-
--- Trigger para calcular el total de la compra en Compras
-DELIMITER $$
-CREATE TRIGGER trg_calcular_total AFTER INSERT ON DetalleCompra
-FOR EACH ROW
-BEGIN
-    UPDATE Compras
-    SET totalCompra = totalCompra + (SELECT SUM(cantidadCompra * precioCompra) FROM DetalleCompra WHERE compraId = NEW.compraId)
-    WHERE compraId = NEW.compraId;
-END$$
-DELIMITER ;
 
 
-
--- Trigger para calcular el total de la factura en Factura
-DELIMITER $$
-CREATE TRIGGER trg_calcular_total_factura AFTER INSERT ON DetalleFactura
-FOR EACH ROW
-BEGIN
-    UPDATE Facturas
-    SET total = total + (SELECT SUM(cantidad * precioUnitario) FROM DetalleFactura WHERE facturaId = NEW.facturaId)
-    WHERE facturaId = NEW.facturaId;
-END$$
-DELIMITER ;

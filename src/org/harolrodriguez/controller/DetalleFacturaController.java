@@ -67,9 +67,7 @@ public class DetalleFacturaController implements Initializable {
     @FXML
     private TableColumn colProducto;
 
-    @FXML
-    private void clickAtras(MouseEvent event) {
-    }
+    
 
     private enum operaciones {
         AGREGAR, ELIMINAR, EDITAR, ACTUALIZAR, CANCELAR, NINGUNO

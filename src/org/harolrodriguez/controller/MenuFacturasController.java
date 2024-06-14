@@ -392,9 +392,12 @@ public class MenuFacturasController implements Initializable {
 
     public void reporte() {
         switch (tipoDeOperaciones) {
-            case ACTUALIZAR:
-                case NINGUNO:
+            case NINGUNO:
                 imprimirReporte();
+                        break;
+                case ACTUALIZAR:
+                    cargarDatos();
+
                 desactivarControles();
                 limpiarControles();
                 btnEditar.setText("Editar");
@@ -404,14 +407,15 @@ public class MenuFacturasController implements Initializable {
                 imgEditar.setImage(new Image("/org/harolrodriguez/images/EditarF.png"));
                 imgReporte.setImage(new Image("/org/harolrodriguez/images/Reportes.png"));
                 tipoDeOperaciones = operaciones.NINGUNO;
+                break;
         }
     }
 
     public void imprimirReporte(){
          Map parametros = new HashMap();
-         int factID = ((Facturas)tblFacturas.getSelectionModel().getSelectedItem()).getFacturaId();
-         parametros.put("factID", factID);
-         GenerarReporte.mostrarReportes("ReporteClientes.jasper", "Reporte de Clientes", parametros);
+         int facID = ((Facturas)tblFacturas.getSelectionModel().getSelectedItem()).getFacturaId();
+         parametros.put("facID", facID);
+         GenerarReporte.mostrarReportes("Factura.jasper", "Facturas", parametros);
         
     }
     
